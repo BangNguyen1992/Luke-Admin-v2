@@ -36,7 +36,11 @@
 			url:'/user-detail',
 			templateUrl: 'components/userDetail/userDetail.html'
 		})
-		
+		.state('report',{
+			url:'/report',
+			templateUrl: 'components/report/reports.html'
+		})
+
 		;
 
 
@@ -50,7 +54,7 @@
 //			})
 //		};
 //		getAuth();
-		
+
 		lockProvider.init({
 			clientID: "PiNpdLmpYJrgKllnT7GbLbjAFKjtcAY6",
 			domain: "nikitak.eu.auth0.com"
