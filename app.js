@@ -30,10 +30,10 @@
 		})
 			.state('test',{
 			url:'/test',
-			
+			controller: 'test.js',
 			templateUrl: 'components/test/test.html'
 		})
-		
+
 		;
 
 
@@ -47,7 +47,7 @@
 //			})
 //		};
 //		getAuth();
-		
+
 		lockProvider.init({
 			clientID: "PiNpdLmpYJrgKllnT7GbLbjAFKjtcAY6",
 			domain: "nikitak.eu.auth0.com"

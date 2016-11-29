@@ -1,4 +1,4 @@
-var table = document.getElementById("list-tab1e")
+var table = document.getElementById("list-table")
 $(document).ready(function() {
 finda11()
 });
@@ -179,5 +179,3 @@ var newUsername = function (id) {httpGetAsync('http://www.balticapp.fi/lukeA/use
 
   	})
   }
-
-  
