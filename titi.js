@@ -12,9 +12,9 @@ $(document).ready(function () {
 			xmlHttp.send(null);
 		}
 	
-	var table = $("#list-tab1e");
+	var table = document.getElementById("list-tab1e");
 	
-			var findall = function () {
+			var finda11 = function () {
 				httpGetAsync('http://www.balticapp.fi/lukeA/user/get-all',
 					function (data) {
 						var mData = eval(data);
@@ -156,7 +156,7 @@ $(document).ready(function () {
 					});
 			};
 	
-	findall();
+	finda11();
 //ban user
 			var banUser = function (delete_btn, id) {
 					httpGetAsync('http://www.balticapp.fi/lukeA/user/ban' + '?id=' + id,
