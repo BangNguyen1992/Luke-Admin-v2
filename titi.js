@@ -1,5 +1,5 @@
 (function ($) {
-$(document).ready(function () {
+$(document).on('click', 'ul li a', function (e) {
 	var httpGetAsync = function (theUrl, callback) {
 			var xmlHttp = new XMLHttpRequest();
 			xmlHttp.onreadystatechange = function () {

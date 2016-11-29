@@ -1,12 +1,13 @@
-$(document).ready(function () {
-	console.log("get here?");
+$(document).on('click', 'ul li a', function (e) {
+	
 	//Create a new exp pattern
-			var submit = $('#submit').click(function () {
+			$('#submit-exp').click(function () {
 				var title = document.getElementById("title").value;
 				var reportGain = document.getElementById("reportGain").value;
 				var upvoteGain = document.getElementById("upvoteGain").value;
 				var downvoteGain = document.getElementById("downvoteGain").value;
 				var active = document.getElementById("active").value;
+				console.log("get here?");
 				var JSONObject = {
 					"title": title,
 					"reportGain": reportGain,
