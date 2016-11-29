@@ -1,5 +1,5 @@
 (function($){
-$(document).on('click', 'ul li a', function (e) {
+$(document).on('click', 'ul li a, button', function (e) {
 var table = document.getElementById("list-tab1e");
 	console.log(table);
 var reportDetail = document.getElementById("report");
