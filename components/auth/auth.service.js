@@ -25,6 +25,7 @@
     // This method is called from app.run.js
     function registerAuthenticationListener() {
       lock.on('authenticated', function (authResult) {
+				console.log("OK?");
         localStorage.setItem('id_token', authResult.idToken);
 				localStorage.setItem('acstoken', authResult.accessToken);
 				localStorage.setItem('payload', authResult.idTokenPayload);

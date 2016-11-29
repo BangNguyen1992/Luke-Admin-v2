@@ -1,7 +1,8 @@
 (function($){
-$(document).on('click', 'ul li a', function (e) {
-var table = document.getElementById("list-tab1e")
-var reportDetail = document.getElementById("report")
+$(document).on('click', 'ul li a, button', function (e) {
+var table = document.getElementById("list-tab1e");
+	console.log(table);
+var reportDetail = document.getElementById("report");
 
 var clientID = "";
 var domain = "";
@@ -16,39 +17,6 @@ var domain = "";
 					scope: 'openid email'
 				} //Details: https://auth0.com/docs/scopes
 			}
-		});
-
-
-		$('.btn-login').click(function (e) {
-			e.preventDefault();
-			lock.show();
-		});
-
-		$('.btn-logout').click(function (e) {
-			e.preventDefault();
-			logout();
-		})
-		lock.on("authenticated", function (authResult) {
-			lock.getProfile(authResult.idToken, function (error, profile) {
-				if (error) {
-					// Handle error
-					return;
-				}
-				//			console.log('Authorization: Bearer ' + authResult.idToken);
-				//			console.log('acstoken: ' + authResult.accessToken);
-				//			console.log('payload: ' + authResult.idTokenPayload);
-				//			console.log('profile: ' + JSON.stringify(profile));
-
-				localStorage.setItem('id_token', authResult.idToken);
-				localStorage.setItem('acstoken', authResult.accessToken);
-				localStorage.setItem('payload', authResult.idTokenPayload);
-				//			localStorage.setItem('state', authResult.state);
-				localStorage.setItem('profile', JSON.stringify(profile));
-
-				// Display user information
-				show_profile_info(profile);
-			});
-
 		});
 
 		$.ajaxSetup({
@@ -79,21 +47,6 @@ var domain = "";
 			xmlHttp.send(null);
 		}
 
-
-		httpGetAsync('http://www.balticapp.fi/lukeA/login', function (response) {
-			console.log(response);
-
-			response.text().then(function (t) {
-				if (response.status !== 200) {
-					console.log('error');
-
-					return;
-				}
-				alert('API Response: ' + JSON.stringify(JSON.parse(t)));
-			}).catch(function (err) {
-				alert('error: ' + err);
-			});
-		});
 
 var findreports = function (id) {httpGetAsync('http://www.balticapp.fi/lukeA/report',
 	 function (data) {
@@ -140,23 +93,23 @@ var rows = '';
 mData.forEach(function (contact) {
 	var $row = document.createElement('tr')
 	var did = (contact.id).substr(2, 7)
-										       $row.dataset.id = contact.id
-													 var Status = "Ban"
-	                         $row.innerHTML = `
-	                         <td>
-													 <a href="userDetail.html" data-action="user"> ${did}</a>
-	                         </td>
-	                         <td>
-	                         ${contact.username || 'no username'}
-	                         </td>
-	                         <td>
-	                         ${contact.score || 'no score'}
-	                         </td>
-	                         <td class="actions">
-	                         <a href="#" data-action="edit">Edit</a> |
-	                         <a href="#" class = "ban-user" data-action="delete">${Status}</a>
-	                         </td>
-	                        `
+		$row.dataset.id = contact.id
+var Status = "Ban"
+$row.innerHTML = `
+<td>
+<a href="userDetail.html" data-action="user"> ${did}</a>
+</td>
+<td>
+${contact.username || 'no username'}
+</td>
+<td>
+${contact.score || 'no score'}
+</td>
+<td class="actions">
+<a href="#" data-action="edit">Edit</a> |
+<a href="#" class = "ban-user" data-action="delete">${Status}</a>
+</td>
+ `
 rows += $row;
 table.appendChild($row);
 });
@@ -346,39 +299,40 @@ var logout = function () {
 
 		retrieve_profile();
 
-//		$('#submit-exp').click(function () {
-//			
-//			var title = document.getElementById("title").value;
-//			var reportGain = document.getElementById("reportGain").value;
-//			var upvoteGain = document.getElementById("upvoteGain").value;
-//			var downvoteGain = document.getElementById("downvoteGain").value;
-//			var active = document.getElementById("active").value;
-//			console.log("get here?");
-//			var JSONObject = {
-//				"title": title,
-//				"reportGain": reportGain,
-//				"upvoteGain": upvoteGain,
-//				"downvoteGain": downvoteGain,
-//				"active": active,
-//			};
-//
-//			$.ajax({
-//				url: 'http://www.balticapp.fi/lukeA/experience/create',
-//				type: 'post',
-//				data: JSONObject,
-//				dataType: 'JSON',
-//				success: function (data) {
-//					console.log(data);
-//					var jsonData = $.parseJSON(data); //if data is not json
-//					console.log(jsonData);
-//					$('#title').val(jsonData.title);
-//					$('#reportGain').val(jsonData.reportGain);
-//					$('#upvoteGain').val(jsonData.upvoteGain);
-//					$('#downvoteGain').val(jsonData.downvoteGain);
-//					$('#active').val(jsonData.active);
-//				}
-//			});
-//		});
+		//ADD NEW EXP PATTERN
+		$('#submit-exp').click(function () {
+
+			var title = document.getElementById("title").value;
+			var reportGain = document.getElementById("reportGain").value;
+			var upvoteGain = document.getElementById("upvoteGain").value;
+			var downvoteGain = document.getElementById("downvoteGain").value;
+			var active = document.getElementById("active").value;
+			console.log("get here?");
+			var JSONObject = {
+				"title": title,
+				"reportGain": reportGain,
+				"upvoteGain": upvoteGain,
+				"downvoteGain": downvoteGain,
+				"active": active,
+			};
+
+			$.ajax({
+				url: 'http://www.balticapp.fi/lukeA/experience/create',
+				type: 'post',
+				data: JSONObject,
+				dataType: 'JSON',
+				success: function (data) {
+					console.log(data);
+					var jsonData = $.parseJSON(data); //if data is not json
+					console.log(jsonData);
+					$('#title').val(jsonData.title);
+					$('#reportGain').val(jsonData.reportGain);
+					$('#upvoteGain').val(jsonData.upvoteGain);
+					$('#downvoteGain').val(jsonData.downvoteGain);
+					$('#active').val(jsonData.active);
+				}
+			});
+		});
 
 	})
 });
