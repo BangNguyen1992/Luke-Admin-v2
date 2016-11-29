@@ -62,6 +62,19 @@ $(document).ready(function () {
 						finda11(table)
 					}
 				})
+				.on('click', 'a#report-link', function(e){
+					e.preventDefault()
+					var navbar = $("#navbar", app_container)
+					var report_container = $(".page-wrapper", app_container)
+					var reportul = jQuery("#report-ul", report_container)
+					console.log(reportul);
+					console.log(report_container)
+					findreports(reportul)
+					// if(!table.hasClass('data-loded')){
+					// 	finda11(table)
+					// }
+				})
+
 
 			$.ajaxSetup({
 				'beforeSend': function (xhr) {
@@ -107,7 +120,45 @@ $(document).ready(function () {
 				});
 			});
 
+			var findreports (reportul)= function () {httpGetAsync('http://www.balticapp.fi/lukeA/report',
+			 function (data) {
+			 console.log(data.length);
+		   var reports = eval(data);
+			 var imgrows = '';
+			//  var imgTitle= ''
+			//  var imgDesc =''
+			var src = 'images.jpg'
+			 reports.forEach(function(report){
+		      var img = document.createElement('li');
+					console.log(img);
+					console.log(reportul);
+			// 	 var htag = document.createElement('h3');
+			// 	 var ptag = document.createElement('p');
+			// background-color: "#f44336;" font-size: "16px;" border-radius: "8px;
+			 	 img.dataset.id = report.id
+				 img.dataset.action = "view"
+				 img.innerHTML = `
+				 <img src=${src} />
+				<h3>${report.title}</h3>
+				<p>${report.description}</p>
+				<button id="report" data-action="remove" ">Delete</button>
+				 `
+				 reportul.append(img)
+			 })
+		reportDetail.addEventListener('click', function(event){
+			event.preventDefault()
+			var rButton = event.target
+			var deleteI = rButton.closest('li')
+			var id = deleteI.dataset.id
+			var action = rButton.dataset.action
+			if (action === 'remove'  ){
+				removeSubmission(id)
+			}
+			deleteI.remove()
+		})
 
+		 })
+		}
 	var finda11 = function (table) {httpGetAsync('http://www.balticapp.fi/lukeA/user/get-all',
 
 		function (data) {
@@ -134,8 +185,6 @@ $(document).ready(function () {
 		                         </td>
 		                        `
 	// rows += $row;
-	console.log($row);
-	console.log(table);
 	table.append($row);
 	table.addClass('data-loded')
 	});
