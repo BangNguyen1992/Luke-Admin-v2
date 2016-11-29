@@ -93,9 +93,9 @@ $(document).ready(function () {
 
 							if (action === 'save') {
 								var $inputs = $row.querySelectorAll('input, textarea');
-								 var name = $inputs[0].value;
-								 var contact = $inputs[1].value;
-								 var note = $inputs[2].value;
+								var name = $inputs[0].value;
+								var contact = $inputs[1].value;
+								var note = $inputs[2].value;
 
 								$row.innerHTML = `
       <td>
