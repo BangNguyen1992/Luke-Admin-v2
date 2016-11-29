@@ -28,10 +28,13 @@
 //			controller:'EXPCtrl',
 			templateUrl: 'components/exp/exp.html'
 		})
-			.state('test',{
-			url:'/test',
-			
-			templateUrl: 'components/test/test.html'
+			.state('table',{
+			url:'/table',
+			templateUrl: 'components/table/tables.html'
+		})
+		.state('userDetail',{
+			url:'/user-detail',
+			templateUrl: 'components/userDetail/userDetail.html'
 		})
 		
 		;

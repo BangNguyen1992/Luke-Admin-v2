@@ -12,7 +12,7 @@ $(document).ready(function () {
 			xmlHttp.send(null);
 		}
 	
-	var table = document.getElementById("list-tab1e");
+	var table = $("#list-tab1e");
 	
 			var findall = function () {
 				httpGetAsync('http://www.balticapp.fi/lukeA/user/get-all',
