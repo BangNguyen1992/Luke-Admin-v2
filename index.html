@@ -8,6 +8,7 @@
 
 	<!-- Basic style -->
 	<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+	<link href="components/report/report.css" rel="stylesheet"/>
 	<style>
 		.navbar {
 			margin-bottom: 0;
@@ -34,9 +35,9 @@
 						<li ng-if="isAuthenticated"><a ui-sref="home" ng-click="authService.logout()">Log Out</a></li>
 						<li><a ui-sref="home">Home</a></li>
 						<li><a ui-sref="exp">EXP Pattern</a></li>
-						<li><a id="table-link" ui-sref="table">Table</a></li>
+						<li><a id="table-link" ui-sref="table">Users</a></li>
+						<li><a id="report-link" ui-sref="report">Report</a></li>
 						<li><a ui-sref="userDetail">User Detail</a></li>
-						<li><a id="report-link" ui-sref="report">Reports</a></li>
 					</ul>
 				</div>
 			</div>
