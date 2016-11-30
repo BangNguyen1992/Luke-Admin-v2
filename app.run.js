@@ -19,6 +19,8 @@
 
     // Register the synchronous hash parser
     lock.interceptHash();
+		
+//		console.log(localStorage.id_token);
   }
 
 })();

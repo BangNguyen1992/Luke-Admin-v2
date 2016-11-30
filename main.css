@@ -1,0 +1,75 @@
+.pad {
+	margin-top: 50px;
+	margin-left: 50px;
+}
+
+a{
+	cursor: pointer;
+}
+
+.stat-cover {
+	display: flex;
+	flex-flow: row;
+}
+
+.stat-cover .jumbotron {
+	flex: 1 1 auto;
+}
+
+.payment-table {
+	width: 80%;
+	flex: 1 1 80%;
+}
+
+.payment-row {
+	display: flex;
+	flex-flow: row nowrap;
+	padding: 5px;
+}
+
+.payment-cell {
+	flex-basis: 15%;
+	padding: 5px;
+}
+
+.payment-cell &.short {
+	flex-basis: 10%;
+}
+
+.payment-cell &.long {
+	flex-basis: 30%;
+}
+
+.payment-cell &.action {
+	flex-basis: 25%;
+	padding: 0;
+}
+
+.sub-table {
+	width: 40%;
+	flex: 1 1 40%;
+}
+
+.sub-table .sub-row {
+	display: flex;
+	flex-flow: row nowrap;
+	padding: 5px;
+}
+
+.sub-table .sub-row .sub-cell {
+	flex-basis: 40%;
+	padding: 5px;
+}
+
+.sub-table .sub-row .sub-cell &.short {
+	flex-basis: 10%;
+}
+
+.sub-table .sub-row .sub-cell &.long {
+	flex-basis: 60%;
+}
+
+.sub-table .sub-row .sub-cell &.action {
+	flex-basis: 25%;
+	padding: 0;
+}

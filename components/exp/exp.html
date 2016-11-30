@@ -1,27 +1,77 @@
 
-<div class="exp">
+<div class="pad">
 <h2>CREATE A NEW EXP PATTERN</h2>
-<form>
+<form ng-submit="createPattern()" method="post">
 		<label>Title</label>
 		<br>
-		<input id="title"/>
+		<input id="title" ng-model="body.title"/>
 		<br>
 		<label>EXP Gain from Report</label>
 		<br>
-		<input id="reportGain"/>
+		<input id="reportGain" ng-model="body.reportGain"/>
 		<br>
 		<label>EXP Gain from Upvote</label>
 		<br>
-		<input  id="upvoteGain"/>
+		<input  id="upvoteGain" ng-model="body.upvoteGain"/>
 		<br>
 		<label>EXP Minus from Downvote</label>
 		<br>
-		<input  id="downvoteGain"/>
+		<input  id="downvoteGain" ng-model="body.downvoteGain"/>
 		<br>
 		<label>Pattern State</label>
 		<br>
-		<input placeholder="true or false" id="active"/>
+		<input ng-model="body.active" placeholder="true or false" id="active"/>
 		<br>
 		<button type="submit" id="submit-exp">CREATE</button>
 	</form>
+	
+	<br>
+	<h2>EXP PATTERN LIST</h2>
+<!--
+	<div ng-repeat="data in vm.datas">
+ Title {{data.title}} status : {{data.active}}
+</div>
+-->
+	<div style="display: flex">
+	<div class="row payment-table">
+    <div class="">
+      <div class="payment-row">
+        <div class="payment-cell">
+          Title
+        </div>
+        <div class="payment-cell long">
+          Report EXP Gain
+        </div>
+        <div class="payment-cell">
+          Upvote Gain
+        </div>
+        <div class="payment-cell">
+          Downvote Gain
+        </div>
+        <div class="payment-cell short">
+          Activation Status
+        </div>
+        <div class="payment-cell">
+          Action
+        </div>
+				<div class="payment-cell">
+          
+        </div>
+      </div>
+      <div ng-repeat="data in vm.datas" class="payment-row">
+        <div class="payment-cell">{{data.title}}</div>
+        <div class="payment-cell long">{{data.reportGain}}</div>
+        <div class="payment-cell">{{data.upvoteGain}}</div>
+        <div class="payment-cell">{{data.downvoteGain}}</div>
+        <div class="payment-cell short">{{data.active}}</div>
+        <div class="payment-cell">{{data.id}}</div>
+				<a class="payment-cell" data-id={{data.id}} ng-click="delete(data.id)">Delete</a>
+				<a class="payment-cell" data-id={{data.id}} ng-click="activate(data.id, data.active)">Activate</a>
+      </div>
+    </div>
+
+  </div>
+	</div>
+	
+	
 </div>

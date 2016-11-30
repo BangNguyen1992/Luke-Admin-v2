@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 	<!-- Basic style -->
+	<link type="text/css" rel="stylesheet" href="main.css"/>
 	<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 	<style>
 		.navbar {
@@ -15,10 +16,11 @@
 		}
 	</style>
 
-	<link href="bower_components/metisMenu/dist/metisMenu.css" />
-	<link href="bower_components/datatables/media/css/dataTables.bootstrap.css" />
-	<link href="bower_components/bootstrap-social/bootstrap-social.css" />
-
+	<link rel="stylesheet" href="bower_components/metisMenu/dist/metisMenu.css" />
+	<link rel="stylesheet" href="bower_components/datatables/media/css/dataTables.bootstrap.css" />
+	<link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
+	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"/>
+	
 </head>
 
 <body>
@@ -33,9 +35,10 @@
 						<li ng-if="!isAuthenticated"><a ui-sref="login">Log In</a></li>
 						<li ng-if="isAuthenticated"><a ui-sref="home" ng-click="authService.logout()">Log Out</a></li>
 						<li><a ui-sref="home">Home</a></li>
-						<li><a ui-sref="exp">EXP Pattern</a></li>
-						<li><a ui-sref="table">Table</a></li>
+						<li><a ui-sref="table">Users</a></li>
 						<li><a ui-sref="userDetail">User Detail</a></li>
+						<li><a ui-sref="exp">EXP Pattern</a></li>
+						<li><a ui-sref="submission">Submissions</a></li>
 					</ul>
 				</div>
 			</div>
@@ -44,12 +47,12 @@
 		<div ui-view></div>
 	</div>
 
-	<script src="bower_components/jquery/dist/jquery.js"></script>
-	<script src="custom.js"></script>
+	
+	
 <!--	<script src="bang.js"></script>-->
 <!--	<script src="titi.js"></script>-->
-
-	<script type="text/javascript" src="auth0-variables.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<!--	<script src="custom.js"></script>-->
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 	<script type="text/javascript" src="bower_components/auth0-lock/build/lock.js"></script>
@@ -64,6 +67,9 @@
 
 	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="bower_components/metisMenu/dist/metisMenu.js"></script>
+	<script src="components/apiService.js"></script>
+	<script src="components/exp/expController.js"></script>
+	<script src="components/submission/submissionCtrl.js"></script>
 
 </body>
 
