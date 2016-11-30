@@ -62,7 +62,7 @@ $(document).ready(function () {
 						finda11(table)
 					}
 				})
-				.on('click', 'a#report-link', function(e){
+			app_container.on('click', 'a#report-link', function(e){
 					e.preventDefault()
 					var navbar = $("#navbar", app_container)
 					var report_container = $(".page-wrapper", app_container)
