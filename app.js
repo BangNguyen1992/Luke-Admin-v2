@@ -25,8 +25,15 @@
 			})
 			.state('exp',{
 			url:'/exp',
-//			controller:'EXPCtrl',
-			templateUrl: 'components/exp/exp.html'
+			controller:'EXPCtrl',
+			templateUrl: 'components/exp/exp.html',
+			controllerAs: 'vm'
+		})
+		.state('submission',{
+			url:'/submission',
+			controller:'SubmissionCtrl',
+			templateUrl: 'components/submission/submission.html',
+			controllerAs: 'vm'
 		})
 			.state('table',{
 			url:'/table',

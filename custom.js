@@ -1,14 +1,20 @@
-(function($){
-$(document).on('click', 'ul li a, button', function (e) {
-var table = document.getElementById("list-tab1e");
-	console.log(table);
-var reportDetail = document.getElementById("report");
-
-var clientID = "";
-var domain = "";
+//(function($){
+//$(document).on('click', 'ul li a, button', function (e) {
+$(document).ready(function () {
+	var table = document.getElementById("list-tab1e");
+	var reportDetail = document.getElementById("report");
+	var myRequest = new XMLHttpRequest();
+	var clientID = "";
+	var domain = "";
 	$.getJSON("http://www.balticapp.fi/lukeA/authzero", function (result) {
 		clientID = result.AUTH0_CLIENT_ID;
 		domain = result.AUTH0_DOMAIN;
+
+		//		myRequest.onreadystatechange = function() {
+		//		$(".find-a11").click(function(){
+		//			finda11();
+		//			console.log("hello there");
+		//		});
 
 		var lock = new Auth0Lock(clientID, domain, {
 			auth: {
@@ -48,54 +54,57 @@ var domain = "";
 		}
 
 
-var findreports = function (id) {httpGetAsync('http://www.balticapp.fi/lukeA/report',
-	 function (data) {
-	 
-   var reports = eval(data);
-	 var imgrows = '';
-	//  var imgTitle= ''
-	//  var imgDesc =''
-	var src = 'homi.jpg'
-	 reports.forEach(function(report){
-      var img = document.createElement('li');
-	// 	 var htag = document.createElement('h3');
-	// 	 var ptag = document.createElement('p');
-	 	 img.dataset.id = report.id
-		 img.innerHTML = `
+		var findreports = function (id) {
+			httpGetAsync('http://www.balticapp.fi/lukeA/report',
+				function (data) {
+
+					var reports = eval(data);
+					var imgrows = '';
+					//  var imgTitle= ''
+					//  var imgDesc =''
+					var src = 'homi.jpg'
+					reports.forEach(function (report) {
+						var img = document.createElement('li');
+						// 	 var htag = document.createElement('h3');
+						// 	 var ptag = document.createElement('p');
+						img.dataset.id = report.id
+						img.innerHTML = `
 		 <img src=${src} />
 		<h3>${report.approved}</h3>
 		<p>${report.description}</p>
 
 		 `
-		 imgrows += img;
-		 reportDetail.appendChild(img)
-	// 	 //var src = report.image_url
-	// 	 var title = report.approved
-	// 	 var desc = report.description
-	// 	 img.src = 'homi.jpg';
-	// 	 imgrows += img
-	// 	 reportDetail.appendChild(img)
-	// 	 imgTitle += htag
-	// 	 reportDetail.appendChild(htag)
-	// 	 imgDesc+=desc
-	// 	 reportDetail.appendChild(desc)
-//
-//
-	 })
+						imgrows += img;
+						reportDetail.appendChild(img)
+							// 	 //var src = report.image_url
+							// 	 var title = report.approved
+							// 	 var desc = report.description
+							// 	 img.src = 'homi.jpg';
+							// 	 imgrows += img
+							// 	 reportDetail.appendChild(img)
+							// 	 imgTitle += htag
+							// 	 reportDetail.appendChild(htag)
+							// 	 imgDesc+=desc
+							// 	 reportDetail.appendChild(desc)
+							//
+							//
+					})
 
- })
-}
-var finda11 = function () {httpGetAsync('http://www.balticapp.fi/lukeA/user/get-all',
+				})
+		}
+		var finda11 = function () {
+			httpGetAsync('http://www.balticapp.fi/lukeA/user/get-all',
 
-function (data) {
-var mData = eval(data);
-var rows = '';
-mData.forEach(function (contact) {
-	var $row = document.createElement('tr')
-	var did = (contact.id).substr(2, 7)
-		$row.dataset.id = contact.id
-var Status = "Ban"
-$row.innerHTML = `
+				function (data) {
+					var mData = eval(data);
+					var rows = '';
+					console.log(mData);
+					mData.forEach(function (contact) {
+						var $row = document.createElement('tr')
+						var did = (contact.id).substr(2, 7)
+						$row.dataset.id = contact.id
+						var Status = "Ban"
+						$row.innerHTML = `
 <td>
 <a href="userDetail.html" data-action="user"> ${did}</a>
 </td>
@@ -110,37 +119,37 @@ ${contact.score || 'no score'}
 <a href="#" class = "ban-user" data-action="delete">${Status}</a>
 </td>
  `
-rows += $row;
-table.appendChild($row);
-});
-table.addEventListener('click', function (event) {
-event.preventDefault()
-var $button = event.target
-var $row = $button.closest('tr')
-var id = $row.dataset.id
-var action = $button.dataset.action
-if (action === 'delete') {
-	var delete_btn = $(".ban-user",$row)
+						rows += $row;
+						table.appendChild($row);
+					});
+					table.addEventListener('click', function (event) {
+						event.preventDefault()
+						var $button = event.target
+						var $row = $button.closest('tr')
+						var id = $row.dataset.id
+						var action = $button.dataset.action
+						if (action === 'delete') {
+							var delete_btn = $(".ban-user", $row)
 
-	if(delete_btn.hasClass("banned")){
-		userRole(id)
-		unBanUser(delete_btn, id)
-		userRole(id)
-	}else{
-		userRole(id)
-		banUser(delete_btn, id)
-		userRole(id)
-	}
-}
-if (action === 'user') {
-	userProf(id)
-}
-if (action === 'edit') {
-  var $cells = $row.querySelectorAll('td')
-  var name = $cells[0].textContent.trim()
-  var contact = $cells[1].textContent.trim()
-  var note = $cells[2].textContent.trim()
-    $row.innerHTML = `
+							if (delete_btn.hasClass("banned")) {
+								userRole(id)
+								unBanUser(delete_btn, id)
+								userRole(id)
+							} else {
+								userRole(id)
+								banUser(delete_btn, id)
+								userRole(id)
+							}
+						}
+						if (action === 'user') {
+							userProf(id)
+						}
+						if (action === 'edit') {
+							var $cells = $row.querySelectorAll('td')
+							var name = $cells[0].textContent.trim()
+							var contact = $cells[1].textContent.trim()
+							var note = $cells[2].textContent.trim()
+							$row.innerHTML = `
       <td>
         <input value="${name}" data-original="${name}">
       </td>
@@ -155,15 +164,15 @@ if (action === 'edit') {
         <a href="#" data-action="cancel">cancel</a>
       </td>
     `
-  }
+						}
 
-  if (action === 'save') {
-    var $inputs = $row.querySelectorAll('input, textarea')
-    var name = $inputs[0].value
-    var contact = $inputs[1].value
-    var note = $inputs[2].value
+						if (action === 'save') {
+							var $inputs = $row.querySelectorAll('input, textarea')
+							var name = $inputs[0].value
+							var contact = $inputs[1].value
+							var note = $inputs[2].value
 
-    $row.innerHTML = `
+							$row.innerHTML = `
       <td>
         ${name}
       </td>
@@ -179,29 +188,30 @@ if (action === 'edit') {
       </td>
     `
 
-    contacts.forEach(function (contactItem) {
-      if (contactItem.id === id) {
-        contactItem.name = name
-        contactItem.contact = contact
-        contactItem.note = note
-      }
-    })
-var newUsername = function () {httpGetAsync('http://www.balticapp.fi/lukeA/user/set-username'+'?username='+contact,
-	function (data) {
-	console.log(data);
+							contacts.forEach(function (contactItem) {
+								if (contactItem.id === id) {
+									contactItem.name = name
+									contactItem.contact = contact
+									contactItem.note = note
+								}
+							})
+							var newUsername = function () {
+								httpGetAsync('http://www.balticapp.fi/lukeA/user/set-username' + '?username=' + contact,
+									function (data) {
+										console.log(data);
 
-		})
-	}
-	newUsername()
-  }
+									})
+							}
+							newUsername()
+						}
 
-  if (action === 'cancel') {
-    var $inputs = $row.querySelectorAll('input, textarea')
-    var name = $inputs[0].dataset.original
-    var contact = $inputs[1].dataset.original
-    var note = $inputs[2].dataset.original
+						if (action === 'cancel') {
+							var $inputs = $row.querySelectorAll('input, textarea')
+							var name = $inputs[0].dataset.original
+							var contact = $inputs[1].dataset.original
+							var note = $inputs[2].dataset.original
 
-    $row.innerHTML = `
+							$row.innerHTML = `
       <td>
         ${name}
       </td>
@@ -216,15 +226,19 @@ var newUsername = function () {httpGetAsync('http://www.balticapp.fi/lukeA/user/
         <a href="#" data-action="delete">Ban</a>
       </td>
     `
-  }
-})
-	});
-};
-		
-finda11()
-findreports()
+						}
+						console.log(table);
+					})
+				});
+		};
 
-	//retrieve the profile:
+//
+		finda11();
+		findreports();
+
+
+
+		//retrieve the profile:
 		var retrieve_profile = function () {
 			var id_token = localStorage.getItem('id_token');
 			if (id_token) {
@@ -244,96 +258,99 @@ findreports()
 			$('.avatar').attr('src', profile.picture).show();
 			$('.btn-logout').show();
 			$('.nav-container').show();
-      $('.find-all').show();
-
-
+			$('.find-all').show();
 
 		};
 		//ban user
-var banUser = function (delete_btn,id) {httpGetAsync('http://www.balticapp.fi/lukeA/user/ban'+'?id='+id,
-	function (data) {
-		var data = JSON.parse(data)
-		if(data.success == true ){
-			console.log(data);
-			console.log(data.success);
-			delete_btn.addClass("banned")
-			//delete_btn.innerHTML = "Unban"
-			delete_btn.html("Unban")
+		var banUser = function (delete_btn, id) {
+				httpGetAsync('http://www.balticapp.fi/lukeA/user/ban' + '?id=' + id,
+					function (data) {
+						var data = JSON.parse(data)
+						if (data.success == true) {
+							console.log(data);
+							console.log(data.success);
+							delete_btn.addClass("banned")
+								//delete_btn.innerHTML = "Unban"
+							delete_btn.html("Unban")
+						}
+
+					})
+			}
+			//unba user
+		var unBanUser = function (delete_btn, id) {
+				httpGetAsync('http://www.balticapp.fi/lukeA/user/unban' + '?id=' + id,
+					function (data) {
+						var data = JSON.parse(data)
+						if (data.success == true) {
+							console.log(data);
+							console.log(data.success);
+							delete_btn.removeClass("banned")
+							delete_btn.html("Ban")
+						}
+					})
+			}
+			//check user roles
+		var userRole = function (id) {
+			httpGetAsync('http://www.balticapp.fi/lukeA/user/roles' + '?id=' + id,
+				function (data) {
+					console.log(data);
+
+				})
+		}
+		var userProf = function (id) {
+			httpGetAsync('http://www.balticapp.fi/lukeA/user' + '?id=' + id,
+				function (data) {
+					console.log(data);
+
+				})
+		}
+		var viewSubmission = function () {
+
 		}
 
-	})
-}
-	//unba user
- var unBanUser = function (delete_btn,id) {httpGetAsync('http://www.balticapp.fi/lukeA/user/unban'+'?id='+id,
- 	function (data) {
- 	var data = JSON.parse(data)
- 	if(data.success == true ){
- 		console.log(data);
- 		console.log(data.success);
-		delete_btn.removeClass("banned")
-		delete_btn.html("Ban")
- 		}
- })
- }
-//check user roles
- var userRole = function (id) {httpGetAsync('http://www.balticapp.fi/lukeA/user/roles'+'?id='+id,
-		function (data) {
-		console.log(data);
-
-	})
-}
-var userProf = function (id) {httpGetAsync('http://www.balticapp.fi/lukeA/user'+'?id='+id,
-	function (data) {
-	console.log(data);
-
-	})
-}
-var viewSubmission = function () {
-
-}
-
-var logout = function () {
-	localStorage.removeItem('id_token');
+		var logout = function () {
+			localStorage.removeItem('id_token');
 			window.location.href = "/";
 		};
 
 		retrieve_profile();
 
 		//ADD NEW EXP PATTERN
-		$('#submit-exp').click(function () {
+//		$('#submit-exp').click(function () {
+//
+//			var title = document.getElementById("title").value;
+//			var reportGain = document.getElementById("reportGain").value;
+//			var upvoteGain = document.getElementById("upvoteGain").value;
+//			var downvoteGain = document.getElementById("downvoteGain").value;
+//			var active = document.getElementById("active").value;
+//			console.log("get here?");
+//			var JSONObject = {
+//				"title": title,
+//				"reportGain": reportGain,
+//				"upvoteGain": upvoteGain,
+//				"downvoteGain": downvoteGain,
+//				"active": active,
+//			};
+//
+//			$.ajax({
+//				url: 'http://www.balticapp.fi/lukeA/experience/create',
+//				type: 'post',
+//				data: JSONObject,
+//				dataType: 'JSON',
+//				success: function (data) {
+//					console.log(data);
+//					var jsonData = $.parseJSON(data); //if data is not json
+//					console.log(jsonData);
+//					$('#title').val(jsonData.title);
+//					$('#reportGain').val(jsonData.reportGain);
+//					$('#upvoteGain').val(jsonData.upvoteGain);
+//					$('#downvoteGain').val(jsonData.downvoteGain);
+//					$('#active').val(jsonData.active);
+//				}
+//			});
+//		});
 
-			var title = document.getElementById("title").value;
-			var reportGain = document.getElementById("reportGain").value;
-			var upvoteGain = document.getElementById("upvoteGain").value;
-			var downvoteGain = document.getElementById("downvoteGain").value;
-			var active = document.getElementById("active").value;
-			console.log("get here?");
-			var JSONObject = {
-				"title": title,
-				"reportGain": reportGain,
-				"upvoteGain": upvoteGain,
-				"downvoteGain": downvoteGain,
-				"active": active,
-			};
-
-			$.ajax({
-				url: 'http://www.balticapp.fi/lukeA/experience/create',
-				type: 'post',
-				data: JSONObject,
-				dataType: 'JSON',
-				success: function (data) {
-					console.log(data);
-					var jsonData = $.parseJSON(data); //if data is not json
-					console.log(jsonData);
-					$('#title').val(jsonData.title);
-					$('#reportGain').val(jsonData.reportGain);
-					$('#upvoteGain').val(jsonData.upvoteGain);
-					$('#downvoteGain').val(jsonData.downvoteGain);
-					$('#active').val(jsonData.active);
-				}
-			});
-		});
-
+		//		}
 	})
 });
-})(jQuery)
+//})(jQuery)
