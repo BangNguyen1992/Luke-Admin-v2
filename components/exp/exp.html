@@ -39,19 +39,22 @@
         <div class="payment-cell">
           Title
         </div>
-        <div class="payment-cell long">
+        <div class="payment-cell short">
           Report EXP Gain
         </div>
-        <div class="payment-cell">
+        <div class="payment-cell short">
           Upvote Gain
         </div>
-        <div class="payment-cell">
+        <div class="payment-cell short">
           Downvote Gain
         </div>
         <div class="payment-cell short">
           Activation Status
         </div>
-        <div class="payment-cell">
+        <div class="payment-cell long">
+          ID
+        </div>
+				<div class="payment-cell">
           Action
         </div>
 				<div class="payment-cell">
@@ -60,11 +63,11 @@
       </div>
       <div ng-repeat="data in vm.datas" class="payment-row">
         <div class="payment-cell">{{data.title}}</div>
-        <div class="payment-cell long">{{data.reportGain}}</div>
-        <div class="payment-cell">{{data.upvoteGain}}</div>
-        <div class="payment-cell">{{data.downvoteGain}}</div>
+        <div class="payment-cell short">{{data.reportGain}}</div>
+        <div class="payment-cell short">{{data.upvoteGain}}</div>
+        <div class="payment-cell short">{{data.downvoteGain}}</div>
         <div class="payment-cell short">{{data.active}}</div>
-        <div class="payment-cell">{{data.id}}</div>
+        <div class="payment-cell long">{{data.id}}</div>
 				<a class="payment-cell" data-id={{data.id}} ng-click="delete(data.id)">Delete</a>
 				<a class="payment-cell" data-id={{data.id}} ng-click="activate(data.id, data.active)">Activate</a>
       </div>

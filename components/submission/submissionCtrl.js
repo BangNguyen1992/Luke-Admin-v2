@@ -33,7 +33,7 @@
 		
 		$scope.delete = function(id) {
          console.log(id);
-			apiService.get('report/remove?id='+id);
+			apiService.get('report/remove?id='+id)
      };
 		
 		function approve(id) {
@@ -41,14 +41,18 @@
 			apiService.get('report/approve?id='+id);
      };
 		
-		function disapprove(id) {
-         console.log(id);
-			apiService.get('report/disapprove?id='+id);
+		function disapprove(id, state) {
+         console.log(state);
+			apiService.get('report/disapprove?id='+id).then(function(id){
+
+//					state = false;
+
+			});
      };
 		
 		$scope.approved = function(id, approved){
 			if(approved){
-				disapprove(id);
+				disapprove(id, approved);
 			} else {
 				approve(id);
 			}
