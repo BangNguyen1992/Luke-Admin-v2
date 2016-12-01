@@ -72,9 +72,8 @@
 <!--				<div class="payment-cell short">{{data.approved}}</div>-->
 <!--				<div class="payment-cell short">{{data.votes.length}}</div>-->
 				<a class="payment-cell text-left" data-id={{data.id, data.approved}}  ng-click="approved(data.id, data.approved)">
-					{{data.approved}}
-<!--					<span ng-if="data.approved">{{data.approved}}</span>-->
-<!--					<span ng-show="data.approved == null">Neutral</span>-->
+					<span ng-show="data.approved != null">{{data.approved}}</span>
+					<span ng-show="data.approved == null">Neutral</span>
 <!--					<span ng-if="!data.approved">Neutral</span>-->
 					</a>
 				<a class="payment-cell text-left" data-id={{data.id}} ng-click="delete(data.id)">Delete</a>
