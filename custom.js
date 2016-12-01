@@ -244,16 +244,16 @@ $(document).ready(function () {
 	//list all submissions
 	var findreports = function (reportul) {httpGetAsync('http://www.balticapp.fi/lukeA/report',
 	 function (data) {
-	 console.log(data.length);
 	 var reports = eval(data);
 	 var imgrows = '';
-   var src = 'images.jpg'
+  //  var src = 'images.jpg'
 	 reports.forEach(function(report){
 		 var img = document.createElement('li');
 		 img.dataset.id = report.id
+		 console.log(report.title);
 		 img.dataset.action = "view"
 		 img.innerHTML = `
-		 <img src=${src} />
+		 <img src=${report.image_url} />
 		 <h3>${report.title}</h3>
 		 <p>${report.description}</p>
 		 <button id="report" data-action="remove" ">Delete</button>

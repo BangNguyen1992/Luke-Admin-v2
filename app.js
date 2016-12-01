@@ -33,7 +33,7 @@
 			url:'/submission',
 			controller:'SubmissionCtrl',
 			templateUrl: 'components/submission/submission.html',
-			controllerAs: 'vm'
+			// controllerAs: 'vm'
 		})
 			.state('table',{
 			url:'/table',
@@ -43,7 +43,7 @@
 			url:'/user-detail',
 			templateUrl: 'components/userDetail/userDetail.html'
 		})
-		
+
 		;
 
 
@@ -57,7 +57,7 @@
 //			})
 //		};
 //		getAuth();
-		
+
 		lockProvider.init({
 			clientID: "PiNpdLmpYJrgKllnT7GbLbjAFKjtcAY6",
 			domain: "nikitak.eu.auth0.com"
