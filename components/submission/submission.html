@@ -1,6 +1,14 @@
+<!--	Create new report-->
+
+<!--<div ui-view="createReport"></div>-->
+
+<!--	Submission List-->
+<h1 class="text-center" style="padding-top: 20px;">USER'S SUBMISSION LIST</h1>
 <div class="pad" style="display: flex">
+
 	<div class="row payment-table">
-		<div class="">
+		<div class="table-content">
+			<div class="table-header">
 			<div class="payment-row">
 				<div class="payment-cell">
 					<a href="#" ng-click="sortType = 'date'; sortReverse = !sortReverse; saveUser($event)">
@@ -16,38 +24,36 @@
 						<span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
 					</a>
 				</div>
-				<div class="payment-cell long">
+				<div class="payment-cell">
 					<a href="#" ng-click="sortType = 'description'; sortReverse = !sortReverse; saveUser($event)">
 						<span id="center">Description</span>
 						<span ng-show="sortType == 'description' && !sortReverse" class="fa fa-caret-down"></span>
 						<span ng-show="sortType == 'description' && sortReverse" class="fa fa-caret-up"></span>
 					</a>
 				</div>
-
 				<div class="payment-cell short">
 					<a href="#" ng-click="sortType = 'positive'; sortReverse = !sortReverse; saveUser($event)">
-						<span id="center">Positive Submission</span>
+						<span id="center">State</span>
 						<span ng-show="sortType == 'positive' && !sortReverse" class="fa fa-caret-down"></span>
 						<span ng-show="sortType == 'positive' && sortReverse" class="fa fa-caret-up"></span>
 					</a>
 				</div>
-				<div class="payment-cell short">
+				<div class="payment-cell text-center short">
 					<a href="#" ng-click="sortType = 'reported'; sortReverse = !sortReverse; saveUser($event)">
 						<span id="center">Reported</span>
 						<span ng-show="sortType == 'reported' && !sortReverse" class="fa fa-caret-down"></span>
 						<span ng-show="sortType == 'reported' && sortReverse" class="fa fa-caret-up"></span>
 					</a>
 				</div>
-
-				<div class="payment-cell short">
+				<div class="payment-cell text-center short">
 					<a href="#" ng-click="sortType = 'Approved'; sortReverse = !sortReverse; saveUser($event)">
 						<span id="center">Approved</span>
 						<span ng-show="sortType == 'Approved' && !sortReverse" class="fa fa-caret-down"></span>
 						<span ng-show="sortType == 'Approved' && sortReverse" class="fa fa-caret-up"></span>
 					</a>
-					
 				</div>
-<!--
+<!--				<div class="payment-cell text-center">Action</div>-->
+				<!--
 				<div class="payment-cell">
 					<a href="#" ng-click="sortType = 'vote'; sortReverse = !sortReverse; saveUser($event)">
 						<span id="center">Votes</span>
@@ -56,35 +62,35 @@
 					</a>
 				</div>
 -->
-				<div class="payment-cell"> </div>
-<!--				<div class="payment-cell">Delete </div>-->
+				<div class="payment-cell long"> </div>
+				<!--				<div class="payment-cell">Delete </div>-->
+				</div>
 			</div>
-			<div ng-repeat="data in vm.datas | orderBy:sortType:sortReverse" class="payment-row">
+			<div ng-repeat="data in vm.datas | orderBy:sortType:sortReverse" class="payment-row table-data">
 				<div class="payment-cell text-left">{{data.date |date:'short'}}</div>
 				<div class="payment-cell text-left">{{data.title}}</div>
-				<div class="payment-cell text-left long">{{data.description}}</div>
-				<div class="payment-cell text-left short">
-					<span ng-if="data.positive">{{data.positive}}</span>
-					<span ng-if="!data.positive">Neutral</span>
+				<div class="payment-cell text-left">{{data.description}}</div>
+				<div class="payment-cell text-left short"  ng-class="{positive: data.positive === true, negative: data.positive === false, neutral: data.positive == null}">
+					<span ng-if="data.positive">POSITIVE</span>
+					<span ng-if="data.positive === false">NEGATIVE</span>
+					<span ng-show="data.positive == null">NEUTRAL</span>
 				</div>
-				<div class="payment-cell text-left short">{{data.flagged}}</div>
-
-<!--				<div class="payment-cell short">{{data.approved}}</div>-->
-<!--				<div class="payment-cell short">{{data.votes.length}}</div>-->
-				<a class="payment-cell text-left" data-id={{data.id, data.approved}}  ng-click="approved(data.id, data.approved)">
+				<div style="text-transform: uppercase;" class="payment-cell text-center short">{{data.flagged}}</div>
+				<!--				<div class="payment-cell short">{{data.approved}}</div>-->
+				<!--				<div class="payment-cell short">{{data.votes.length}}</div>-->
+				<a style="text-transform: uppercase;" class="payment-cell text-center short" data-id={{data.id, data.approved}} ng-click="approved(data.id, data.approved)">
 					<span ng-show="data.approved != null">{{data.approved}}</span>
 					<span ng-show="data.approved == null">Neutral</span>
-<!--					<span ng-if="!data.approved">Neutral</span>-->
-					</a>
-				<a class="payment-cell text-left" data-id={{data.id}} ng-click="delete(data.id)">Delete</a>
-<!--				<a class="payment-cell" data-id={{data.id}} ng-click="activate(data.id, data.active)">Activate</a>-->
-
+					<!--					<span ng-if="!data.approved">Neutral</span>-->
+				</a>
+				<div class="payment-cell text-right long " >
+				<button class="btn"><a data-id={{data.id}} ng-click="delete(data.id)">Delete</a></button></div>
+				<!--				<a class="payment-cell" data-id={{data.id}} ng-click="activate(data.id, data.active)">Activate</a>-->
 				<!--
 				<a class="payment-cell" data-id={{data.id}} ng-click="delete(data.id)">Delete</a>
 				<a class="payment-cell" data-id={{data.id}} ng-click="activate(data.id, data.active)">Activate</a>
 -->
 			</div>
 		</div>
-
 	</div>
 </div>

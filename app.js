@@ -23,41 +23,51 @@
 				templateUrl: 'components/login/login.html',
 				controllerAs: 'vm'
 			})
-			.state('exp',{
-			url:'/exp',
-			controller:'EXPCtrl',
-			templateUrl: 'components/exp/exp.html',
-			controllerAs: 'vm'
-		})
-		.state('submission',{
-			url:'/submission',
-			controller:'SubmissionCtrl',
-			templateUrl: 'components/submission/submission.html',
-			controllerAs: 'vm'
-		})
-			.state('table',{
-			url:'/table',
-			templateUrl: 'components/table/tables.html'
-		})
-		.state('userDetail',{
-			url:'/user-detail',
-			templateUrl: 'components/userDetail/userDetail.html'
-		})
-		
+			.state('exp', {
+				url: '/exp',
+				controller: 'EXPCtrl',
+				templateUrl: 'components/exp/exp.html',
+				controllerAs: 'vm'
+			})
+			.state('submission', {
+				url: '/submission',
+				views: {
+					'': {
+						templateUrl: 'components/submission/submission.html',
+						controller: 'SubmissionCtrl',
+						controllerAs: 'vm'
+					},
+					'createReport@submission':{
+						templateUrl: 'components/submission/createReport.html',
+						controller: 'CreateReportCtrl',
+						controllerAs: 'vm'
+					}
+				}
+
+			})
+			.state('table', {
+				url: '/table',
+				templateUrl: 'components/table/tables.html'
+			})
+			.state('userDetail', {
+				url: '/user-detail',
+				templateUrl: 'components/userDetail/userDetail.html'
+			})
+
 		;
 
 
-//		var clientID = "";
-//		var domain = "";
-//
-//		function getAuth($http) {
-//			$http.get("http://www.balticapp.fi/lukeA/authzero").then(function (result) {
-//				this.clientID = result.AUTH0_CLIENT_ID;
-//				this.domain = result.AUTH0_DOMAIN;
-//			})
-//		};
-//		getAuth();
-		
+		//		var clientID = "";
+		//		var domain = "";
+		//
+		//		function getAuth($http) {
+		//			$http.get("http://www.balticapp.fi/lukeA/authzero").then(function (result) {
+		//				this.clientID = result.AUTH0_CLIENT_ID;
+		//				this.domain = result.AUTH0_DOMAIN;
+		//			})
+		//		};
+		//		getAuth();
+
 		lockProvider.init({
 			clientID: "PiNpdLmpYJrgKllnT7GbLbjAFKjtcAY6",
 			domain: "nikitak.eu.auth0.com"
