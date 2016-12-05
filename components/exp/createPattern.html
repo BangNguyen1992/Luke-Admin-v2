@@ -1,0 +1,28 @@
+
+<h3>CREATE A NEW EXP PATTERN</h3>
+<form ng-submit="createPattern()" method="post">
+	<div class="form-container">
+		<label>Title</label>
+		
+		<input id="title" ng-model="body.title"/>
+		
+		<label>EXP Gain from Report</label>
+		
+		<input id="reportGain" ng-model="body.reportGain"/>
+		
+		<label>EXP Gain from Upvote</label>
+		
+		<input  id="upvoteGain" ng-model="body.upvoteGain"/>
+		
+		<label>EXP Minus from Downvote</label>
+		
+		<input  id="downvoteGain" ng-model="body.downvoteGain"/>
+		
+		<label>Pattern State</label>
+		
+		<input ng-model="body.active" placeholder="True or False" id="active"/>
+		
+		<button class="btn" type="submit" id="submit-exp">CREATE</button>
+		</div>
+	</form>
+	

@@ -1,0 +1,38 @@
+<div class="col-md-4 col-xs-12">
+	<div class="pad">
+		<h3>Create a new Admin Marker</h3>
+		<form ng-submit="createPattern()" method="post">
+			<div class="form-container">
+				<label>Title</label>
+
+				<input id="title" ng-model="body.title" />
+
+				<label>Owner</label>
+
+				<input id="owner" ng-model="body.owner" />
+
+				<label>Description</label>
+
+				<input id="description" ng-model="body.description" />
+
+				<label>Latitude</label>
+
+				<input id="latitude" ng-model="body.latitude" />
+
+				<label>Longitude</label>
+
+				<input id="longitude" ng-model="body.longitude" />
+
+				<button class="btn" type="submit" id="submit">CREATE</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="col-md-8 col-xs-12">
+	<div class="pad">
+		<div class=" " ui-view="getMarker">
+		</div>
+
+	</div>
+</div>

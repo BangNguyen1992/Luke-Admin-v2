@@ -1,12 +1,14 @@
+/*@import url("modal.css");*/
+
 body {
 	background: #fafafa;
 	color: #454544;
 }
 
 .pad {
-	margin-top: 50px;
-	margin-left: 50px;
-	margin-right: 25px;
+	margin-top: 20px;
+	margin-left: 2%;
+	margin-right: 1%;
 }
 
 a {
@@ -22,18 +24,18 @@ a {
 	flex: 1 1 auto;
 }
 
-.payment-table {
+.data-table {
 	width: 90%;
 	flex: 1 1 90%;
 }
 
-.payment-row {
+.data-row {
 	display: flex;
 	flex-flow: row nowrap;
 	padding: 5px;
 }
 
-.payment-cell {
+.data-cell {
 	flex-basis: 15%;
 	padding: 5px;
 }
@@ -52,8 +54,8 @@ a {
 }
 
 .sub-table {
-	width: 40%;
-	flex: 1 1 40%;
+	width: 60%;
+	flex: 1 1 60%;
 }
 
 .sub-table .sub-row {
@@ -67,15 +69,15 @@ a {
 	padding: 5px;
 }
 
-.sub-table .sub-row .sub-cell &.short {
+.sub-table .sub-row .sub-cell.short {
 	flex-basis: 10%;
 }
 
-.sub-table .sub-row .sub-cell &.long {
+.sub-table .sub-row .sub-cell.long {
 	flex-basis: 60%;
 }
 
-.sub-table .sub-row .sub-cell &.action {
+.sub-table .sub-row .sub-cell.action {
 	flex-basis: 25%;
 	padding: 0;
 }
@@ -93,15 +95,22 @@ a {
 	display: flex;
 	flex-flow: column nowrap;
 	padding-top: 30px;
-/*	align-items: center;*/
+	/*	align-items: center;*/
 }
 
-.table-header .payment-row {
-/*	align-self:center;*/
+.table-header .data-row {
+	/*	align-self:center;*/
 }
 
-.table-header .payment-cell {
+.table-header .data-cell {
 	font-size: 16px;
+	font-weight: 600;
+	line-height: 23px;
+	text-transform: uppercase;
+}
+
+.table-header .sub-cell {
+	font-size: 13px;
 	font-weight: 600;
 	line-height: 23px;
 	text-transform: uppercase;
@@ -114,30 +123,94 @@ a {
 .table-data {
 	padding-top: 10px;
 	background-color: white;
+	flex-flow: row;
 }
 
-.positive{
+.positive {
 	color: #6fb614;
 }
-.negative{
+
+.negative {
 	color: red;
 }
-.neutral{
+
+.neutral {
 	color: #454544;
 }
-.btn{
+
+.btn,
+.btn:focus {
 	background-color: #0c6bec;
 	border: 1px solid #0c6bec;
 	border-radius: 0;
+	color: white;
 }
-.btn:hover{
+
+.btn:hover {
 	background-color: white;
-
+	color: #0c6bec;
+	border: 1px solid #0c6bec;
 }
-.btn a{
-	color: white !important;
-}
-.btn:hover a{
-	color:#0c6bec !important;
 
+.btn a {
+	color: white;
+}
+
+.btn:hover a {
+	color: #0c6bec;
+}
+
+.btn-load {
+	width: 350px;
+	height: 40px;
+	margin: 18px auto;
+	display: block;
+	font-size: 20px;
+	text-transform: capitalize;
+}
+
+.modal-container {
+	flex-direction: column;
+}
+
+.modal {
+	top: 20%;
+	padding-right: 20px;
+	justify-content: center;
+	align-self: center;
+}
+
+.modal-dialog {
+	width: auto;
+	max-width: 600px;
+	display: flex;
+	justify-content: center;
+}
+
+.form-container {
+	display: flex;
+	height: 450px;
+	justify-content: space-around;
+	align-content: space-around;
+	width: 100%;
+	flex: 1 1 90%;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.form-container label {
+	display: flex;
+		margin-bottom: -10px;
+}
+
+.form-container form {
+	width: 90%;
+}
+
+.form-container input {
+	display: flex;
+	width: 80%;
+	max-width: 300px;
+	height: 35px;
+	padding-left: 10px;
 }
