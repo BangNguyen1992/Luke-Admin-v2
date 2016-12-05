@@ -4,11 +4,24 @@
 
 		console.log(app_container)
 
+
+		var table_container = $(".table-responsive", app_container)
+		var table = $("#list-tab1e", table_container)
+		var findallbtn = $("#test1", app_container)
+		var report_container = $(".page-wrapper", app_container)
+		var test = $("#test")
+		console.log(test);
+		var form = $("#add-form", report_container)
+		var reportul = $("#report-ul", report_container)
+		console.log($("#page-wrapper", $(this)));
+
 		var clientID = "";
 		var domain = "";
+
 		$.getJSON("http://www.balticapp.fi/lukeA/authzero", function (result) {
 			clientID = result.AUTH0_CLIENT_ID;
 			domain = result.AUTH0_DOMAIN;
+
 
 			app_container
 				.on('click', 'a#table-link', function (e) {
@@ -19,6 +32,7 @@
 					if (!table.hasClass('data-loded')) {
 						finda11(table)
 					}
+
 				})
 				.on('click', 'a#report-link', function (e) {
 					e.preventDefault()
@@ -28,6 +42,12 @@
 					findreports(reportul)
 
 				})
+
+			.on('click', 'a#test1', function (event) {
+				console.log("test");
+				finda11(table)
+				console.log(table);
+			})
 
 
 			$.ajaxSetup({
@@ -58,17 +78,98 @@
 				xmlHttp.send(null);
 			}
 
-			var finda11 = function (table) {
-				httpGetAsync('http://www.balticapp.fi/lukeA/user/get-all',
+
+			var findreports = function (reportul, form) {
+				httpGetAsync('http://www.balticapp.fi/lukeA/category',
 					function (data) {
-						var mData = eval(data);
-						var rows = '';
-						mData.forEach(function (contact) {
-							var $row = document.createElement('tr')
-							var did = (contact.id).substr(2, 7)
-							$row.dataset.id = contact.id
-							var Status = "Ban"
-							$row.innerHTML = `
+						console.log(data);
+						var categorys = eval(data);
+						var imgrows = '';
+						categorys.forEach(function (category) {
+							var img = document.createElement('li');
+							img.dataset.id = category.id
+							img.innerHTML = `
+			 <img src=${category.image_url} />
+			 <h3>${category.title}</h3>
+			 <p>${category.description}</p>
+			 <button id="report" data-action="remove" ">Delete</button>
+			 <button  data-action="update" ">update</button>
+
+			 `
+							reportul.append(img)
+						})
+						reportul.on('click', function (event) {
+							event.preventDefault()
+							var rButton = event.target
+							var deleteI = rButton.closest('li')
+							var id = deleteI.dataset.id
+							var action = rButton.dataset.action
+							if (action === 'remove') {
+								deleteCatagory(id)
+								console.log('delete');
+								deleteI.remove()
+							}
+							if (action === 'update') {
+								console.log('update');
+							}
+						})
+
+						form.on('submit', function (event) {
+							event.preventDefault()
+							console.log('clicked');
+							var image = document.querySelector('#image').value
+							var title = document.querySelector('#title').value
+							var description = document.querySelector('#description').value
+							var positive = document.querySelector('#positive').value
+							var row = document.createElement('li')
+								//row.dataset.id = id
+							row.innerHTML = `
+		<img src=${image} />
+	  <h3>${title}</h3>
+	  <p>${description}</p>
+	  <button id="report" data-action="remove" ">Delete</button>
+	  <button  data-action="update" ">update</button>
+	  `
+							reportul.append(row)
+
+							$.ajax({
+								type: "POST",
+								url: 'http://www.balticapp.fi/lukeA/category/create',
+								data: {
+									"title": title,
+									"description": description,
+									"image": image,
+									"positive": positive
+								},
+								success: function () {
+									console.log('sucess');
+								},
+								error: function () {
+									console.log(error);
+								},
+							});
+
+							//form.reset()
+							//   contacts.push({
+							//     id: id,
+							//     name: name
+							//   })
+						})
+
+					})
+			}
+
+			var finda11 = function (table) {httpGetAsync('http://www.balticapp.fi/lukeA/user/get-all',
+		function (data) {
+		var mData = eval(data);
+		var rows = '';
+	  mData.forEach(function (contact) {
+			var $row = document.createElement('tr')
+			var did = (contact.id).substr(2, 7)
+											       $row.dataset.id = contact.id
+														 var Status = "Ban"
+		                         $row.innerHTML = `
+
 		                         <td>
 														 <a href="userDetail.html" data-action="user"> ${did}</a>
 		                         </td>
@@ -82,7 +183,7 @@
 		                         <a href="#" data-action="edit">Edit</a> |
 		                         <a href="#" class = "ban-user" data-action="delete">${Status}</a>
 		                         </td>
-		                        `
+		                        ` 
 								// rows += $row;
 							table.append($row);
 							table.addClass('data-loded')
@@ -115,6 +216,7 @@
 								var contact = $cells[1].textContent.trim()
 								var note = $cells[2].textContent.trim()
 								$row.innerHTML = `
+
 		      <td>
 		        <input value="${name}" data-original="${name}">
 		      </td>

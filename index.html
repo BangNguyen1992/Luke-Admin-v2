@@ -47,12 +47,31 @@
 						<li><a ui-sref="exp">EXP Pattern</a></li>
 						<li><a ui-sref="submission">Submissions</a></li>
 						<li><a ui-sref="adminMarker">Admin Marker</a></li>
+
 					</ul>
 				</div>
 			</div>
 		</nav>
 
-		<div ui-view></div>
+		<div ui-view class= "testview">
+
+			<div style="display: none" class="table-responsive">
+				<table id="list-tab1e" width="100%" class="table table-striped table-bordered table-hover">
+					<thead>
+						<th>
+							id
+						</th>
+						<th>
+							User Name
+						</th>
+						<th colspan="2">
+							score
+						</th>
+					</thead>
+				</table>
+			</div>
+		</div>
+
 	</div>
 
 
