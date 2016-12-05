@@ -1,14 +1,29 @@
 (function($){
 $(document).ready(function () {
 		var app_container = $("#app-container", $(this))
-
-		 console.log(app_container)
-
+		var table_container = $(".table-responsive", app_container)
+		var table = jQuery("#list-tab1e", table_container)
+		var findallbtn =jQuery("#find-a11", table_container)
+	console.log(findallbtn);
+	findallbtn.on('click', function (event) {
+		console.log("test");
+	 finda11(table)
+	 console.log(table);
+	})
 	var clientID = "";
 	var domain = "";
 		$.getJSON("http://www.balticapp.fi/lukeA/authzero", function (result) {
 			clientID = result.AUTH0_CLIENT_ID;
 			domain = result.AUTH0_DOMAIN;
+
+
+			findallbtn.on('click', function (e) {
+				e.preventDefault()
+				console.log("test");
+			 finda11(table)
+			 console.log(table);
+			})
+
 
 			app_container
 				.on('click', 'a#table-link', function(e){
@@ -19,6 +34,7 @@ $(document).ready(function () {
 					if(!table.hasClass('data-loded')){
 						finda11(table)
 					}
+					catagory()
 				})
 			.on('click', 'a#report-link', function(e){
 					e.preventDefault()
@@ -26,8 +42,13 @@ $(document).ready(function () {
 					var report_container = $(".page-wrapper", app_container)
 					var reportul = jQuery("#report-ul", report_container)
 					findreports(reportul)
-
 				})
+				.on('click', 'a#cat-link', function(e){
+						e.preventDefault()
+						var navbar = $("#navbar", app_container)
+
+					})
+
 
 
 			$.ajaxSetup({
@@ -228,6 +249,13 @@ $(document).ready(function () {
 
 		})
 	}
+//show catagory
+	var catagory = function () {httpGetAsync('http://www.balticapp.fi/lukeA/category',
+		 function (data) {
+		 console.log(data);
+
+	 })
+ }
 	//show user profile
 	var userProf = function (id) {httpGetAsync('http://www.balticapp.fi/lukeA/user'+'?id='+id,
 		function (data) {
@@ -260,6 +288,8 @@ $(document).ready(function () {
 		 `
 		 reportul.append(img)
 	 })
+
+
 	reportul.on('click', function(event){
 	event.preventDefault()
 	var rButton = event.target
