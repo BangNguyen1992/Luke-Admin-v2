@@ -44,7 +44,6 @@
 			controller:'userCtrl',
 			templateUrl: 'components/userDetail/userDetail.html',
 			controllerAs: 'vm'
-
 		})
 		.state('catagory',{
 			url:'/catagory',
