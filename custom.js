@@ -2,6 +2,14 @@
 	$(document).ready(function () {
 		var app_container = $("#app-container", $(this))
 
+		console.log(app_container)
+
+		var clientID = "";
+		var domain = "";
+		$.getJSON("http://www.balticapp.fi/lukeA/authzero", function (result) {
+			clientID = result.AUTH0_CLIENT_ID;
+			domain = result.AUTH0_DOMAIN;
+
 			app_container
 				.on('click', 'a#table-link', function (e) {
 					e.preventDefault()
@@ -22,18 +30,21 @@
 				})
 
 
-//			$.ajaxSetup({
-//				'beforeSend': function (xhr) {
-//					if (localStorage.getItem('id_token')) {
-//						xhr.setRequestHeader('Authorization',
-//							'Bearer ' + localStorage.getItem('id_token'));
-//					}
-//					if (localStorage.getItem('acstoken')) {
-//						xhr.setRequestHeader('acstoken',
-//							localStorage.getItem('acstoken'));
-//					}
-//				}
-//			});
+			$.ajaxSetup({
+				'beforeSend': function (xhr) {
+					if (localStorage.getItem('id_token')) {
+						xhr.setRequestHeader('Authorization',
+							'Bearer ' + localStorage.getItem('id_token'));
+					}
+					if (localStorage.getItem('acstoken')) {
+						xhr.setRequestHeader('acstoken',
+							localStorage.getItem('acstoken'));
+					}
+				}
+			});
+
+			var accessToken = localStorage.getItem('acstoken');
+			var idToken = localStorage.getItem('id_token');
 
 			function httpGetAsync(theUrl, callback) {
 				var xmlHttp = new XMLHttpRequest();
@@ -201,7 +212,7 @@
 
 						})
 				}
-				//unban user
+				//unba user
 			var unBanUser = function (delete_btn, id) {
 					httpGetAsync('http://www.balticapp.fi/lukeA/user/unban' + '?id=' + id,
 						function (data) {
@@ -224,54 +235,15 @@
 				}
 				//show user profile
 			var userProf = function (id) {
-					httpGetAsync('http://www.balticapp.fi/lukeA/user' + '?id=' + id,
-						function (data) {
-							console.log(data);
+				httpGetAsync('http://www.balticapp.fi/lukeA/user' + '?id=' + id,
+					function (data) {
+						console.log(data);
 
-						})
-				}
-				//delete a submission
-//			var removeSubmission = function (id) {
-//					httpGetAsync('http://www.balticapp.fi/lukeA/report/remove' + '?id=' + id,
-//						function (data) {
-//							console.log(data);
-//						})
-//				}
-				//list all submissions
-//			var findreports = function (reportul) {
-//				httpGetAsync('http://www.balticapp.fi/lukeA/report',
-//					function (data) {
-//						console.log(data.length);
-//						var reports = eval(data);
-//						var imgrows = '';
-//						var src = 'images.jpg'
-//						reports.forEach(function (report) {
-//							var img = document.createElement('li');
-//							img.dataset.id = report.id
-//							img.dataset.action = "view"
-//							img.innerHTML = `
-//		 <img src=${src} />
-//		 <h3>${report.title}</h3>
-//		 <p>${report.description}</p>
-//		 <button id="report" data-action="remove" ">Delete</button>
-//		 `
-//							reportul.append(img)
-//						})
-//						reportul.on('click', function (event) {
-//							event.preventDefault()
-//							var rButton = event.target
-//							var deleteI = rButton.closest('li')
-//							var id = deleteI.dataset.id
-//							var action = rButton.dataset.action
-//							if (action === 'remove') {
-//								removeSubmission(id)
-//							}
-//							deleteI.remove()
-//						})
-//
-//					})
-//			}
-//		})
+					})
+			}
+
+
+		})
 	})
 
 })(jQuery)

@@ -8,8 +8,11 @@
 
 	<!-- Basic style -->
 	<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
 	<link href="bower_components/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet" />
-<!--	<link href="components/report/report.css" rel="stylesheet"/>-->
+
+	<link href="catagory.css" rel="stylesheet"/>
+
 	<style>
 		.navbar {
 			margin-bottom: 0;
@@ -39,6 +42,7 @@
 						<li ng-if="isAuthenticated"><a ui-sref="home" ng-click="authService.logout()">Log Out</a></li>
 						<li><a ui-sref="home">Home</a></li>
 						<li><a id="table-link" ui-sref="table">Users</a></li>
+						<li><a id="cat-link" ui-sref="catagory">catagory</a></li>
 						<li><a ui-sref="userDetail">User Detail</a></li>
 						<li><a ui-sref="exp">EXP Pattern</a></li>
 						<li><a ui-sref="submission">Submissions</a></li>

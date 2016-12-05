@@ -35,7 +35,7 @@
 					</div>
 					
 <!--OWNER-->
-					<div class="sub-cell">
+					<div class="sub-cell text-center">
 						<a href="#" ng-click="sortType = 'owner'; sortReverse = !sortReverse; saveUser($event)">
 							<span >Owner</span>
 							<span ng-show="sortType == 'owner' && !sortReverse" class="fa fa-caret-down"></span>
@@ -79,7 +79,7 @@
 				<div class="sub-cell text-left">{{data.description}}</div>
 
 				<!--				OWNER-->
-				<div class="sub-cell text-left">{{data.owner}}</div>
+				<div class="sub-cell text-center">{{data.owner}}</div>
 
 				<!--				LONGITUTE-->
 				<div class="sub-cell text-center">{{data.longitude}}</div>

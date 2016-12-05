@@ -76,8 +76,11 @@
 			.state('userDetail', {
 				url: '/user-detail',
 				templateUrl: 'components/userDetail/userDetail.html'
+			})
+			.state('catagory', {
+				url: '/catagory',
+				templateUrl: 'components/catagory/catagory.html'
 			});
-
 
 		lockProvider.init({
 			clientID: "PiNpdLmpYJrgKllnT7GbLbjAFKjtcAY6",
