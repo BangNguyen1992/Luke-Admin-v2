@@ -35,9 +35,10 @@
 						<li ng-if="isAuthenticated"><a ui-sref="home" ng-click="authService.logout()">Log Out</a></li>
 						<li><a ui-sref="home">Home</a></li>
 						<li><a ui-sref="exp">EXP Pattern</a></li>
-						<li><a id="table-link" ui-sref="table">Users</a></li>
+						<li><a id="table-link" ui-sref="table" >Users</a></li>
 						<li><a id="cat-link" ui-sref="catagory">catagory</a></li>
-
+						<li><a id="test1" >test</a></li>
+						<li><a id="detail" ui-sref="userDetail">detail</a></li>
 						<!-- <li><a href="/components/table/table.html">User Detail</a></li> -->
 						<li><a id="report-link" ui-sref="report">Submissions</a></li>
 					</ul>
@@ -45,7 +46,25 @@
 			</div>
 		</nav>
 
-		<div ui-view></div>
+		<div ui-view class= "testview">
+
+			<div style="display: none" class="table-responsive">
+				<table id="list-tab1e" width="100%" class="table table-striped table-bordered table-hover">
+					<thead>
+						<th>
+							id
+						</th>
+						<th>
+							User Name
+						</th>
+						<th colspan="2">
+							score
+						</th>
+					</thead>
+				</table>
+			</div>
+		</div>
+
 	</div>
 
 	<script src="bower_components/jquery/dist/jquery.js"></script>

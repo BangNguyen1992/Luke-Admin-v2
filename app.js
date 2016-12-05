@@ -41,7 +41,10 @@
 		})
 		.state('userDetail',{
 			url:'/user-detail',
-			templateUrl: 'components/userDetail/userDetail.html'
+			controller:'userCtrl',
+			templateUrl: 'components/userDetail/userDetail.html',
+			controllerAs: 'vm'
+
 		})
 		.state('catagory',{
 			url:'/catagory',

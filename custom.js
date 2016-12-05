@@ -2,18 +2,15 @@
 $(document).ready(function () {
 		var app_container = $("#app-container", $(this))
 		var table_container = $(".table-responsive", app_container)
-		var table = jQuery("#list-tab1e", table_container)
-		var findallbtn =jQuery("#find-a11", table_container)
+		var table = $("#list-tab1e", table_container)
+		var findallbtn =$("#test1", app_container)
 		var report_container = $(".page-wrapper", app_container)
+		var test = $("#test")
+		console.log(test);
 		var form = $("#add-form", report_container)
 		var reportul = $("#report-ul", report_container)
+	console.log($("#page-wrapper",$(this)));
 
-	console.log(reportul);
-	findallbtn.on('click', function (event) {
-		console.log("test");
-	 finda11(table)
-	 console.log(table);
-	})
 	var clientID = "";
 	var domain = "";
 		$.getJSON("http://www.balticapp.fi/lukeA/authzero", function (result) {
@@ -21,12 +18,12 @@ $(document).ready(function () {
 			domain = result.AUTH0_DOMAIN;
 
 
-			findallbtn.on('click', function (e) {
-				e.preventDefault()
-				console.log("test");
-			 finda11(table)
-			 console.log(table);
-			})
+			// findallbtn.on('click', function (e) {
+			// 	e.preventDefault()
+			// 	console.log("test");
+			//  finda11(table)
+			//  console.log(table);
+			// })
 
 
 			app_container
@@ -38,7 +35,7 @@ $(document).ready(function () {
 					if(!table.hasClass('data-loded')){
 						finda11(table)
 					}
-					catagory()
+					//catagory()
 				})
 			.on('click', 'a#cat-link', function(e){
 					e.preventDefault()
@@ -47,6 +44,12 @@ $(document).ready(function () {
 					var reportul = jQuery("#report-ul", report_container)
 						var form = $("#add-form", report_container)
 					findreports(reportul, form)
+				})
+
+				.on('click','a#test1', function (event) {
+					console.log("test");
+				  finda11(table)
+				 console.log(table);
 				})
 
 			$.ajaxSetup({
@@ -80,7 +83,7 @@ $(document).ready(function () {
 
 	var findreports = function (reportul,form) {httpGetAsync('http://www.balticapp.fi/lukeA/category',
 	 function (data) {
-		 console.log(data.length);
+		 console.log(data);
 		 var categorys = eval(data);
 		 var imgrows = '';
 		 categorys.forEach(function(category){
@@ -129,6 +132,20 @@ $(document).ready(function () {
 	  <button  data-action="update" ">update</button>
 	  `
     reportul.append(row)
+
+		$.ajax({
+  type: "POST",
+  url: 'http://www.balticapp.fi/lukeA/category/create',
+  data: {
+      "title": title,
+			"description": description,
+			"image": image,
+			"positive": positive
+    },
+  success: function(){console.log('sucess');},
+  error: function(){console.log(error);},
+});
+
     //form.reset()
  //   contacts.push({
  //     id: id,
@@ -143,6 +160,7 @@ $(document).ready(function () {
 		function (data) {
 		var mData = eval(data);
 		var rows = '';
+		var viewContainer = table.closest('.')
 	  mData.forEach(function (contact) {
 			var $row = document.createElement('tr')
 			var did = (contact.id).substr(2, 7)
@@ -163,9 +181,11 @@ $(document).ready(function () {
 		                         <a href="#" class = "ban-user" data-action="delete">${Status}</a>
 		                         </td>
 		                        `
-	// rows += $row;
 		table.append($row);
-		table.addClass('data-loded')
+
+		table.addClass('data-loded').show()
+		console.log(viewContainer);
+		viewContainer.html(table)
 	});
 	table.on('click', function (event) {
 		event.preventDefault()
