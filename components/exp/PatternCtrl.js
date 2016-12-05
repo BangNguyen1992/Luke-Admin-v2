@@ -4,11 +4,11 @@
 
 	angular
 		.module('app')
-		.controller('EXPCtrl', EXPCtrl);
+		.controller('PatternCtrl', PatternCtrl);
 
-	EXPCtrl.$inject = ['authService', 'apiService', '$scope', '$state'];
+	PatternCtrl.$inject = ['authService', 'apiService', '$scope', '$state'];
 
-	function EXPCtrl(authService, apiService, $scope, $state) {
+	function PatternCtrl(authService, apiService, $scope, $state) {
 
 		var vm = this;
 		vm.authService = authService;
@@ -23,20 +23,11 @@
 				});
 		}
 
-		$scope.createPattern = function () {
-			console.log($scope.body);
-		
-			apiService.post('experience/create', $scope.body)
-
-			.then(function (data) {
-				console.log(data);
-			});
-		}
 		
 		$scope.delete = function(id) {
-         console.log(id);
+      console.log(id);
 			apiService.get('experience/remove?id='+id);
-//			$state.reload();
+			$state.reload(this);
      };
 		
 		$scope.activate = function(id, active){
@@ -44,7 +35,10 @@
 			if(active){
 				alert("The pattern is already activated");
 			}
-			apiService.get('experience/activate?id='+id);
+			apiService.get('experience/activate?id='+id)
+				.then(function (data) {
+				$state.reload(this);
+			});;
 			
 		}
 		

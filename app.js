@@ -3,7 +3,12 @@
 	'use strict';
 
 	angular
-		.module('app', ['auth0.lock', 'angular-jwt', 'ui.router'])
+		.module('app', [
+		'auth0.lock',
+		'angular-jwt',
+		'ui.router',
+		'ui.bootstrap'
+	])
 		.config(config);
 
 	config.$inject = ['$stateProvider', 'lockProvider', '$urlRouterProvider'];
@@ -13,21 +18,30 @@
 		$stateProvider
 			.state('home', {
 				url: '/home',
-				controller: 'HomeController',
+				controller: 'HomeCtrl',
 				templateUrl: 'components/home/home.html',
 				controllerAs: 'vm'
 			})
 			.state('login', {
 				url: '/login',
-				controller: 'LoginController',
+				controller: 'LoginCtrl',
 				templateUrl: 'components/login/login.html',
 				controllerAs: 'vm'
 			})
 			.state('exp', {
 				url: '/exp',
-				controller: 'EXPCtrl',
-				templateUrl: 'components/exp/exp.html',
-				controllerAs: 'vm'
+				views: {
+					'': {
+						templateUrl: 'components/exp/pattern.html',
+						controller: 'PatternCtrl',
+						controllerAs: 'vm'
+					},
+					'create@exp': {
+						templateUrl: 'components/exp/createPattern.html',
+						controller: 'CreatePatternCtrl',
+						controllerAs: 'vm'
+					}
+				}
 			})
 			.state('submission', {
 				url: '/submission',
@@ -36,37 +50,34 @@
 						templateUrl: 'components/submission/submission.html',
 						controller: 'SubmissionCtrl',
 						controllerAs: 'vm'
+					}
+				}
+			})
+			.state('adminMarker', {
+				url: '/marker',
+				views: {
+					'': {
+						templateUrl: 'components/marker/createMarker.html',
+						controller: 'CreateMarkerCtrl',
+						controllerAs: 'vm'
 					},
-					'createReport@submission':{
-						templateUrl: 'components/submission/createReport.html',
-						controller: 'CreateReportCtrl',
+					'getMarker@adminMarker': {
+						templateUrl: 'components/marker/getMarker.html',
+						controller: 'GetMarkerCtrl',
 						controllerAs: 'vm'
 					}
 				}
-
 			})
-			.state('table', {
+
+		.state('table', {
 				url: '/table',
 				templateUrl: 'components/table/tables.html'
 			})
 			.state('userDetail', {
 				url: '/user-detail',
 				templateUrl: 'components/userDetail/userDetail.html'
-			})
+			});
 
-		;
-
-
-		//		var clientID = "";
-		//		var domain = "";
-		//
-		//		function getAuth($http) {
-		//			$http.get("http://www.balticapp.fi/lukeA/authzero").then(function (result) {
-		//				this.clientID = result.AUTH0_CLIENT_ID;
-		//				this.domain = result.AUTH0_DOMAIN;
-		//			})
-		//		};
-		//		getAuth();
 
 		lockProvider.init({
 			clientID: "PiNpdLmpYJrgKllnT7GbLbjAFKjtcAY6",

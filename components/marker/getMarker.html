@@ -1,0 +1,100 @@
+
+<h3 style="padding-bottom: 26px;" class="text-center">Admin Marker List</h3>
+<div class="pad" style="display: flex">
+
+	<div class="row sub-table">
+		<div class="table-content">
+			<div class="table-header">
+				<div class="sub-row">
+					
+<!--DATE-->
+					<div class="sub-cell">
+						<a href="#" ng-click="sortType = 'date'; sortReverse = !sortReverse; saveUser($event)">
+							<span >Date</span>
+							<span ng-show="sortType == 'date' && !sortReverse" class="fa fa-caret-down"></span>
+							<span ng-show="sortType == 'date' && sortReverse" class="fa fa-caret-up"></span>
+						</a>
+					</div>
+					
+<!--TITLE-->
+					<div class="sub-cell">
+						<a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse; saveUser($event)">
+							<span >Title</span>
+							<span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+							<span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
+						</a>
+					</div>
+					
+<!--DESCRIPTION-->
+					<div class="sub-cell">
+						<a href="#" ng-click="sortType = 'description'; sortReverse = !sortReverse; saveUser($event)">
+							<span >Description</span>
+							<span ng-show="sortType == 'description' && !sortReverse" class="fa fa-caret-down"></span>
+							<span ng-show="sortType == 'description' && sortReverse" class="fa fa-caret-up"></span>
+						</a>
+					</div>
+					
+<!--OWNER-->
+					<div class="sub-cell">
+						<a href="#" ng-click="sortType = 'owner'; sortReverse = !sortReverse; saveUser($event)">
+							<span >Owner</span>
+							<span ng-show="sortType == 'owner' && !sortReverse" class="fa fa-caret-down"></span>
+							<span ng-show="sortType == 'owner' && sortReverse" class="fa fa-caret-up"></span>
+						</a>
+					</div>
+					
+<!--LONGITUDE-->
+					<div class="sub-cell text-center">
+						<a href="#" ng-click="sortType = 'longitude'; sortReverse = !sortReverse; saveUser($event)">
+							<span >Longitude</span>
+							<span ng-show="sortType == 'longitude' && !sortReverse" class="fa fa-caret-down"></span>
+							<span ng-show="sortType == 'longitude' && sortReverse" class="fa fa-caret-up"></span>
+						</a>
+					</div>
+					
+<!--LATITUDE-->
+					<div class="sub-cell text-center">
+						<a href="#" ng-click="sortType = 'latitude'; sortReverse = !sortReverse; saveUser($event)">
+							<span >Latitude</span>
+							<span ng-show="sortType == 'latitude' && !sortReverse" class="fa fa-caret-down"></span>
+							<span ng-show="sortType == 'latitude' && sortReverse" class="fa fa-caret-up"></span>
+						</a>
+					</div>
+					
+<!--DELETE-->
+					<div class="sub-cell text-center">DELETE </div>
+					
+				</div>
+			</div>
+
+			<!--Table content-->
+			<div ng-repeat="data in vm.datas | orderBy:sortType:sortReverse | limitTo:totalDisplayed" class="sub-row table-data">
+				<!--				DATE-->
+				<div class="sub-cell text-left">{{data.date |date:'short'}}</div>
+
+				<!--				TITLE-->
+				<div class="sub-cell text-left">{{data.title}}</div>
+
+				<!--				DESCRIPTION-->
+				<div class="sub-cell text-left">{{data.description}}</div>
+
+				<!--				OWNER-->
+				<div class="sub-cell text-left">{{data.owner}}</div>
+
+				<!--				LONGITUTE-->
+				<div class="sub-cell text-center">{{data.longitude}}</div>
+
+				<!--				LATITUDE-->
+				<div class="sub-cell text-center">{{data.latitude}}</div>
+
+				<!--				DELETE ACTION-->
+				<div class="sub-cell text-center">
+					<button class="btn"><a sub-id={{data.id}} ng-click="delete(data.id)">Delete</a></button>
+				</div>
+
+			</div>
+		</div>
+		<button class="btn btn-load text-center" ng-click="loadMore()">Load more</button>
+	</div>
+
+</div>
