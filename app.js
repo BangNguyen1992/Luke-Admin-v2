@@ -70,8 +70,10 @@
 			})
 
 		.state('table', {
-				url: '/table',
-				templateUrl: 'components/table/tables.html'
+			url: '/table',
+			controller: 'TABLECtrl',
+			templateUrl: 'components/table/tables.html',
+			controllerAs: 'vm'
 			})
 			.state('userDetail', {
 				url: '/user-detail',
