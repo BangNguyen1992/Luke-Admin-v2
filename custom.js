@@ -34,12 +34,13 @@
 					}
 
 				})
-				.on('click', 'a#report-link', function (e) {
+				.on('click', 'a#cat-link', function (e) {
 					e.preventDefault()
 					var navbar = $("#navbar", app_container)
 					var report_container = $(".page-wrapper", app_container)
 					var reportul = jQuery("#report-ul", report_container)
-					findreports(reportul)
+					var form = $("#add-form", report_container)
+					findreports(reportul, form)
 
 				})
 
@@ -122,7 +123,6 @@
 							var description = document.querySelector('#description').value
 							var positive = document.querySelector('#positive').value
 							var row = document.createElement('li')
-								//row.dataset.id = id
 							row.innerHTML = `
 		<img src=${image} />
 	  <h3>${title}</h3>
@@ -131,6 +131,10 @@
 	  <button  data-action="update" ">update</button>
 	  `
 							reportul.append(row)
+							if (image !== ''){
+									uploadImage(image, title, 'image/jpeg')
+							}
+
 
 							$.ajax({
 								type: "POST",
@@ -138,7 +142,7 @@
 								data: {
 									"title": title,
 									"description": description,
-									"image": image,
+									// "image": image,
 									"positive": positive
 								},
 								success: function () {
@@ -183,7 +187,7 @@
 		                         <a href="#" data-action="edit">Edit</a> |
 		                         <a href="#" class = "ban-user" data-action="delete">${Status}</a>
 		                         </td>
-		                        ` 
+		                        `
 								// rows += $row;
 							table.append($row);
 							table.addClass('data-loded')
@@ -298,6 +302,55 @@
 						})
 					});
 			};
+		var convertToBase64 = function(url, imagetype, callback){
+
+    var img = document.createElement('IMG'),
+        canvas = document.createElement('CANVAS'),
+        ctx = canvas.getContext('2d'),
+        data = '';
+
+
+    img.crossOrigin = 'Anonymous'
+
+    img.onLoad = function(){
+        canvas.height = this.height;
+        canvas.width = this.width;
+        ctx.drawImage(this, 0, 0);
+        data = canvas.toDataURL(imagetype);
+        callback(data);
+    };
+
+    img.src = url;
+};
+
+var sendBase64ToServer = function(name, base64){
+    var httpPost = new XMLHttpRequest(),
+        path = "http://127.0.0.1:8000/uploadImage/" + name,
+        data = JSON.stringify({image: base64});
+    httpPost.onreadystatechange = function(err) {
+            if (httpPost.readyState == 4 && httpPost.status == 200){
+                console.log(httpPost.responseText);
+            } else {
+                console.log(err);
+            }
+        };
+    // Set the content type of the request to json since that's what's being sent
+    httpPost.setHeader('Content-Type', 'application/json');
+    httpPost.open("POST", path, true);
+    httpPost.send(data);
+};
+
+// This wrapper function will accept the name of the image, the url, and the
+// image type and perform the request
+
+var uploadImage = function(src, name, type){
+    convertToBase64(src, type, function(data){
+        sendBase64ToServer(name, data);
+    });
+};
+
+// Call the function with the provided values. The mime type could also be png
+// or webp
 
 			//ban user
 			var banUser = function (delete_btn, id) {
