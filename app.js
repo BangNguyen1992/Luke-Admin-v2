@@ -80,7 +80,7 @@
 				templateUrl: 'components/userDetail/userDetail.html'
 			})
 			.state('catagory', {
-				controller: 'catCtrl'
+				controller: 'catCtrl',
 				url: '/catagory',
 				templateUrl: 'components/catagory/catagory.html',
 				controllerAs: 'vm'
