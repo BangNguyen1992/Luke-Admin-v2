@@ -20,9 +20,30 @@
 					console.log(data);
                  });
         }
-        $scope.ban = function (id) {
-    			console.log(id);
-    			apiService.get('user/ban?id=' + id).then(function (data) {
+
+
+
+        function ban(id){
+      			apiService.get('user/ban?id=' + id).then(function (id) {
+      				$state.reload(this);
+      			});
+      		}
+
+      		function unban(id){
+      			apiService.get('user/unban?id=' + id).then(function (id) {
+      				$state.reload(this);
+      			});
+      		}
+
+      		$scope.banned = function (id, role) {
+      			if (role.indexOf("ban") > -1 )
+      				unban(id)
+      			else
+      				ban(id)
+      		}
+        // $scope.ban = function (id) {
+    		// 	console.log(id);
+    			// apiService.get('user/ban?id=' + id).then(function (data) {
               //if (data.success == true) {
    								//console.log(data.success);
                 //  $scope.bban = false;
@@ -31,18 +52,18 @@
                   //}
    								  //$scope.btn =""
    								//$scope.Ban = "Unban"
-                 $state.reload(this);
+                 //$state.reload(this);
 
                 //}
       				//$state.reload(this);
               //$scope.Ban = "Unban"
 
-    			})
-            };
+    			// })
+          //   };
 
-        $scope.unban = function(id){
-          apiService.get('user/unban?id=' + id).then(function (data) {
-              //if (data.success == true) {
+        // $scope.unban = function(id){
+        //   apiService.get('user/unban?id=' + id).then(function (data) {
+        //       if (data.success == true) {
    							// 	console.log(data.success);
                   // $scope.bban = false;
                   // $scope.toogle = function(){
@@ -55,26 +76,10 @@
                 //  $state.reload(this);
 
                 // }
-      				 $state.reload(this);
-              //$scope.Ban = "Unban"
-    			})
-        }
-
-
-
-
-
-        $scope.approved = function (id, approved) {
-          if (approved)
-            unban(id, approved);
-          else if (!approved)
-            ban(id);
-
-        }
-
-
-
-
+      	// 			 $state.reload(this);
+        //       //$scope.Ban = "Unban"
+    		// 	})
+        // }
 
     }
 

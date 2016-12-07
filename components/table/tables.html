@@ -121,11 +121,14 @@
 							<button class="ubbtn"><a data-id={{data.id}} ng-click="unban(data.id); toogle(data.id)" ng-hide="!bban">Unban</a></button>
 						</div> -->
 
-						<a style="text-transform: uppercase;" class="data-cell text-center short" data-id={{data.id, data.approved}} ng-click="approved(data.id, data.approved)">
+						<!-- <a style="text-transform: uppercase;" class="data-cell text-center short" data-id={{data.id, data.approved}} ng-click="approved(data.id, data.approved)">
 							<span ng-show="data.approved != null">{{data.approved}}</span>
 							<span ng-show="data.approved == null">Neutral</span>
-						</a>
+						</a> -->
 
+						<a data-id={{data.id, data.roles}} ng-click="banned(data.id, data.roles)">
+						{{data.roles}}
+					</a>
 					</div>
 				</div>
 				<button class="btn btn-load text-center" ng-click="loadMore()">Load more</button>
