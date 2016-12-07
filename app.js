@@ -80,8 +80,11 @@
 				templateUrl: 'components/userDetail/userDetail.html'
 			})
 			.state('catagory', {
+				controller: 'catCtrl'
 				url: '/catagory',
-				templateUrl: 'components/catagory/catagory.html'
+				templateUrl: 'components/catagory/catagory.html',
+				controllerAs: 'vm'
+
 			});
 
 		lockProvider.init({
