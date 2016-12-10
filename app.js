@@ -70,16 +70,21 @@
 			})
 
 		.state('table', {
-				url: '/table',
-				templateUrl: 'components/table/tables.html'
+			url: '/table',
+			controller: 'TABLECtrl',
+			templateUrl: 'components/table/tables.html',
+			controllerAs: 'vm'
 			})
 			.state('userDetail', {
 				url: '/user-detail',
 				templateUrl: 'components/userDetail/userDetail.html'
 			})
 			.state('catagory', {
+				controller: 'catCtrl',
 				url: '/catagory',
-				templateUrl: 'components/catagory/catagory.html'
+				templateUrl: 'components/catagory/catagory.html',
+				controllerAs: 'vm'
+
 			});
 
 		lockProvider.init({
