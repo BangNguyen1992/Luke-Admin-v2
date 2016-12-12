@@ -14,7 +14,7 @@
 		getAllUser();
 
 		$scope.users = [];
-
+// fetch all the users including admins and super admins
 		function getAllUser() {
 			apiService.get('user/get-all')
 				.then(function (data) {
@@ -29,7 +29,7 @@
 				});
 		}
 
-
+//changes the role of a user with the passed id when banned or unbanned
 		$scope.changeRole = function (id) {
 			apiService.get("user/roles?id=" + id)
 				.then(role => {
@@ -47,7 +47,7 @@
 				});
 		}
 
-
+// unbanns a bann user
 		var unban = function (id) {
 			apiService.get("user/unban?id=" + id)
 				.then((role) => {
@@ -57,7 +57,7 @@
 				})
 		}
 
-
+// bans a user 
 		var ban = function (id) {
 			apiService.get("user/ban?id=" + id)
 				.then((role) => {

@@ -14,7 +14,7 @@
 		vm.authService = authService;
 
 		activate();
-		
+	// fetch all the markers saved on the server
 		function activate() {
 			apiService.get('marker')
 				.then(function (data) {
@@ -22,16 +22,16 @@
 				});
 		}
 
-		
+	//Delets a marker from the server 	
 		$scope.delete = function (id) {
 			console.log(id);
 			apiService.get('marker/remove?id=' + id).then(function (id) {
 				$state.reload(this);
 			});
 		};
-		
-		
-		
+
+
+
 		$scope.saveUser = function (event) {
 			event.preventDefault();
 		};
@@ -42,8 +42,8 @@
 		$scope.loadMore = function () {
 			$scope.totalDisplayed += 10;
 		};
-		
-		
-		
+
+
+
 	}
 }());

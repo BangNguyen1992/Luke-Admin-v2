@@ -13,7 +13,7 @@
 		//        vm.authService = authService;
 
 		findall();
-
+// Fetch all the catagories from the server
 		function findall() {
 			apiService.get('category')
 				.then((data) => {
@@ -24,7 +24,7 @@
 					console.log(err);
 				});
 		}
-
+// Delete a category with the specified id
 		$scope.delete = function (id) {
 			console.log(id);
 			apiService.get('category/remove?id=' + id)
@@ -36,7 +36,7 @@
 				});
 		};
 
-
+//Save user 
 		$scope.saveUser = function (event) {
 			event.preventDefault();
 		};
