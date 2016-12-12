@@ -22,13 +22,13 @@
 				});
 		}
 
-
+// delete an experiance with the passed id
 		$scope.delete = function (id) {
 			console.log(id);
 			apiService.get('experience/remove?id=' + id);
 			$state.reload(this);
 		};
-
+// activates an experiance if it is not yet
 		$scope.activate = function (id, active) {
 			console.log(active);
 			if (active) {

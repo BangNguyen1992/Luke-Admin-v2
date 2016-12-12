@@ -15,7 +15,7 @@
 		$scope.body = {};
 
 //		activate();
-//		
+//
 //		function activate() {
 //			apiService.get('marker')
 //				.then(function (data) {
@@ -23,10 +23,10 @@
 //				console.log(data);
 //				});
 //		}
-
+// creates a new marker on the server 
 		$scope.createPattern = function () {
 			console.log($scope.body);
-		
+
 			apiService.post('marker/create', $scope.body)
 
 			.then(function (data) {
@@ -34,6 +34,6 @@
 				$state.reload(this);
 			});
 		}
-		
+
 	}
 }());

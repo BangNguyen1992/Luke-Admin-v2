@@ -13,7 +13,7 @@
 		var vm = this;
 
 		activate();
-
+// fetch all the submissions from the server
 		function activate() {
 			apiService.get('report/admin-get')
 				.then(function (data) {
@@ -22,7 +22,7 @@
 				});
 		}
 
-
+//Delete a submission with the passed id 
 		$scope.delete = function (id) {
 			console.log(id);
 			apiService.get('report/remove?id=' + id).then(function (id) {
