@@ -7,13 +7,15 @@
 		'auth0.lock',
 		'angular-jwt',
 		'ui.router',
-		'ui.bootstrap'
+		'ui.bootstrap',
+		'naif.base64'
 	])
-		.config(config);
+	.config(config);
 
 	config.$inject = ['$stateProvider', 'lockProvider', '$urlRouterProvider'];
 
 	function config($stateProvider, lockProvider, $urlRouterProvider, $http) {
+
 
 		$stateProvider
 			.state('home', {
@@ -69,21 +71,31 @@
 				}
 			})
 
-		.state('table', {
-			url: '/table',
-			controller: 'TABLECtrl',
-			templateUrl: 'components/table/tables.html',
-			controllerAs: 'vm'
-			})
-			.state('userDetail', {
-				url: '/user-detail',
-				templateUrl: 'components/userDetail/userDetail.html'
-			})
-			.state('catagory', {
-				controller: 'catCtrl',
-				url: '/catagory',
-				templateUrl: 'components/catagory/catagory.html',
+		.state('user', {
+				url: '/user',
+				controller: 'UserCtrl',
+				templateUrl: 'components/users/user.html',
 				controllerAs: 'vm'
+			})
+			//			.state('userDetail', {
+			//				url: '/user-detail',
+			//				templateUrl: 'components/userDetail/userDetail.html'
+			//			})
+			.state('category', {
+				url: '/category',
+				views: {
+					'': {
+						templateUrl: 'components/category/createCategory.html',
+						controller: 'CreateCategoryCtrl',
+						controllerAs: 'vm'
+					},
+					'getCategory@category': {
+						templateUrl: 'components/category/category.html',
+						controller: 'CategoryCtrl',
+						controllerAs: 'vm'
+					}
+				}
+
 
 			});
 

@@ -26,7 +26,8 @@
     "datatables": "^1.10.12",
     "datatables-responsive": "^2.1.0",
     "font-awesome": "^4.7.0",
-    "angular-bootstrap": "^2.3.0"
+    "angular-bootstrap": "^2.3.0",
+    "angular-base64-upload": "^0.1.19"
   },
   "resolutions": {
     "angular": "1.5.8"

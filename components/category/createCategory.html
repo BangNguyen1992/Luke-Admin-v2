@@ -1,0 +1,35 @@
+<div class="col-md-4 col-xs-12">
+	<div class="pad">
+		<h3>Create a new Category</h3>
+
+		<form method="post">
+			<div class="form-container">
+				<label>Title</label>
+
+				<input id="title" ng-model="body.title" />
+
+				<label>Description</label>
+
+				<input id="description" ng-model="body.description" />
+
+				<label>Positive?</label>
+
+				<input placeholder="true or false" id="positive" ng-model="body.positive" />
+
+				<label>Image</label>
+
+				<input type="file" id="image" ng-model="body.image" base-sixty-four-input/>
+
+				<button ng-click="createCategory(); uploadPic()" class="btn" type="submit" id="submit">CREATE</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="col-md-8 col-xs-12">
+	<div class="pad">
+		<div class=" " ui-view="getCategory">
+		</div>
+
+	</div>
+</div>

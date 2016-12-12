@@ -174,7 +174,7 @@ a {
 }
 
 .modal {
-	top: 20%;
+	top: 10%;
 	padding-right: 20px;
 	justify-content: center;
 	align-self: center;
@@ -203,8 +203,8 @@ a {
 		margin-bottom: -10px;
 }
 
-.form-container form {
-	width: 90%;
+form{
+	padding-left: 20px;
 }
 
 .form-container input {
@@ -213,4 +213,10 @@ a {
 	max-width: 300px;
 	height: 35px;
 	padding-left: 10px;
+}
+
+.avatar{
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
 }
