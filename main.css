@@ -200,10 +200,10 @@ a {
 
 .form-container label {
 	display: flex;
-		margin-bottom: -10px;
+	margin-bottom: -10px;
 }
 
-form{
+form {
 	padding-left: 20px;
 }
 
@@ -215,7 +215,7 @@ form{
 	padding-left: 10px;
 }
 
-.avatar{
+.avatar {
 	width: 100px;
 	height: 100px;
 	object-fit: cover;

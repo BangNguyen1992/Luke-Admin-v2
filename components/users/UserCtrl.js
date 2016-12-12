@@ -6,11 +6,10 @@
 		.module('app')
 		.controller('UserCtrl', UserCtrl);
 
-	UserCtrl.$inject = ['authService', 'apiService', '$scope', '$state'];
+	UserCtrl.$inject = ['apiService', '$scope', '$state'];
 
-	function UserCtrl(authService, apiService, $scope, $state) {
+	function UserCtrl(apiService, $scope, $state) {
 		var vm = this;
-		vm.authService = authService;
 
 		getAllUser();
 

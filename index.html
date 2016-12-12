@@ -8,10 +8,9 @@
 
 	<!-- Basic style -->
 	<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-
 	<link href="bower_components/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet" />
+	<link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
-	<link href="category.css" rel="stylesheet"/>
 
 	<style>
 		.navbar {
@@ -20,11 +19,6 @@
 		}
 	</style>
 
-<!--
-	<link rel="stylesheet" href="bower_components/metisMenu/dist/metisMenu.css" />
-	<link href="bower_components/datatables/media/css/dataTables.bootstrap.css" />
-	<link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
--->
 	<link href="main.css" rel="stylesheet"/>
 
 </head>
@@ -42,7 +36,6 @@
 						<li ng-if="isAuthenticated"><a ui-sref="home" ng-click="authService.logout()">Log Out</a></li>
 						<li><a ui-sref="home">Home</a></li>
 						<li><a ui-sref="user">Users</a></li>
-<!--						<li><a id="cat-link" ui-sref="catagory">catagory</a></li>-->
 						<li><a ui-sref="category">Categories</a></li>
 						<li><a ui-sref="exp">EXP Pattern</a></li>
 						<li><a ui-sref="submission">Submissions</a></li>
@@ -88,9 +81,7 @@
 
 	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-<!--	<script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>-->
 	<script src="bower_components/angular-base64-upload/dist/angular-base64-upload.min.js"></script>
-<!--	<script src="bower_components/metisMenu/dist/metisMenu.js"></script>-->
 
 </body>
 

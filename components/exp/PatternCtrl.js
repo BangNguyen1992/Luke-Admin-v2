@@ -6,16 +6,15 @@
 		.module('app')
 		.controller('PatternCtrl', PatternCtrl);
 
-	PatternCtrl.$inject = ['authService', 'apiService', '$scope', '$state'];
+	PatternCtrl.$inject = ['apiService', '$scope', '$state'];
 
-	function PatternCtrl(authService, apiService, $scope, $state) {
+	function PatternCtrl(apiService, $scope, $state) {
 
 		var vm = this;
-		vm.authService = authService;
 		$scope.body = {};
 
 		activate();
-		
+
 		function activate() {
 			apiService.get('experience')
 				.then(function (data) {
@@ -23,26 +22,26 @@
 				});
 		}
 
-		
-		$scope.delete = function(id) {
-      console.log(id);
-			apiService.get('experience/remove?id='+id);
+
+		$scope.delete = function (id) {
+			console.log(id);
+			apiService.get('experience/remove?id=' + id);
 			$state.reload(this);
-     };
-		
-		$scope.activate = function(id, active){
+		};
+
+		$scope.activate = function (id, active) {
 			console.log(active);
-			if(active){
+			if (active) {
 				alert("The pattern is already activated");
 			}
-			apiService.get('experience/activate?id='+id)
+			apiService.get('experience/activate?id=' + id)
 				.then(function (data) {
-				$state.reload(this);
-			});;
-			
+					$state.reload(this);
+				});;
+
 		}
-		
-		
+
+
 		$scope.saveUser = function (event) {
 			event.preventDefault();
 		};
@@ -53,6 +52,6 @@
 		$scope.loadMore = function () {
 			$scope.totalDisplayed += 10;
 		};
-		
+
 	}
 }());

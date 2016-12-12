@@ -10,7 +10,7 @@
 		'ui.bootstrap',
 		'naif.base64'
 	])
-	.config(config);
+		.config(config);
 
 	config.$inject = ['$stateProvider', 'lockProvider', '$urlRouterProvider'];
 

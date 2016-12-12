@@ -18,15 +18,18 @@ npm install -g serve
 
 # Run
 serve
+
+# On your Browser
 open localhost on port 3000
 ```
 
 ## Built With
 
-* [JQury]
-* [Angular js]
+* [JQuery]
+* [AngularJS]
 * [Javascript]
-* [Atom text editor]
+* [Atom & Bracket as text editor]
+
 
 ## Contributors:
 [Titay](https://github.com/titay2): Users, Categories

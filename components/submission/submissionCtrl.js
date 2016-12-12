@@ -6,12 +6,11 @@
 		.module('app')
 		.controller('SubmissionCtrl', SubmissionCtrl);
 
-	SubmissionCtrl.$inject = ['authService', 'apiService', '$scope', '$state'];
+	SubmissionCtrl.$inject = ['apiService', '$scope', '$state'];
 
-	function SubmissionCtrl(authService, apiService, $scope, $state) {
+	function SubmissionCtrl(apiService, $scope, $state) {
 
 		var vm = this;
-		vm.authService = authService;
 
 		activate();
 
@@ -64,7 +63,7 @@
 			$scope.totalDisplayed += 10;
 		};
 
-		
+
 
 
 	}
