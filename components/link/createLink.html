@@ -1,0 +1,43 @@
+<div class="col-md-4 col-xs-12">
+	<div class="pad">
+		<h3>Create a new Link</h3>
+
+		<form method="post">
+			<div class="form-container">
+				<label>Title</label>
+
+				<input id="title" ng-model="body.title" />
+
+				<label>Description</label>
+
+				<input id="description" ng-model="body.description" />
+
+				<label>Link</label>
+
+				<input id="link" ng-model="body.link" />
+
+				<label>ID</label>
+
+				<input placeholder="For updating" id="link" ng-model="body.id" />
+
+				<label>Active State</label>
+
+				<input placeholder="true or false" id="active" ng-model="body.active" />
+
+				<div>
+				<button ng-click="createLink()" class="btn" type="submit" id="submit">CREATE</button>
+
+				<button style="margin-left: 20px;" ng-click="updateLink()" class="btn" type="submit" id="submit">UPDATE</button>
+					</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="col-md-8 col-xs-12">
+	<div class="pad">
+		<div class=" " ui-view="getLink">
+		</div>
+
+	</div>
+</div>

@@ -9,15 +9,16 @@
 	UserCtrl.$inject = ['apiService', '$scope', '$state'];
 
 	function UserCtrl(apiService, $scope, $state) {
+
 		var vm = this;
 
 		getAllUser();
 
 		$scope.users = [];
-// fetch all the users including admins and super admins
+		// fetch all the users including admins and super admins
 		function getAllUser() {
 			apiService.get('user/get-all')
-				.then(function (data) {
+				.then((data) => {
 					$scope.users = data;
 
 					var getRole = data.map(user => {
@@ -29,8 +30,7 @@
 				});
 		}
 
-//changes the role of a user with the passed id when banned or unbanned
-		$scope.changeRole = function (id) {
+		$scope.changeRole = (id) => {
 			apiService.get("user/roles?id=" + id)
 				.then(role => {
 					$scope.users.roles = role.toString();
@@ -47,34 +47,38 @@
 				});
 		}
 
-// unbanns a bann user
-		var unban = function (id) {
+		var unban = (id) => {
 			apiService.get("user/unban?id=" + id)
 				.then((role) => {
 					$scope.users.roles = role;
 					console.log("Unbanned ", role, id);
-					$state.reload(this);
+					$state.reload();
 				})
+				.catch((err) => {
+					console.log(err);
+				});
 		}
 
-// bans a user 
-		var ban = function (id) {
+		var ban = (id) => {
 			apiService.get("user/ban?id=" + id)
 				.then((role) => {
 					$scope.users.roles = role;
 					console.log("Banned ", role, id);
-					$state.reload(this);
+					$state.reload();
 				})
+				.catch((err) => {
+					console.log(err);
+				});
 		}
 
-		$scope.saveUser = function (event) {
+		$scope.saveUser = (event) => {
 			event.preventDefault();
 		};
 		$scope.sortType = ''; // set the default sort type
-		$scope.sortReverse = false; // set the default sort order
+		$scope.sortReverse = true; // set the default sort order
 
 		$scope.totalDisplayed = 10;
-		$scope.loadMore = function () {
+		$scope.loadMore = () => {
 			$scope.totalDisplayed += 10;
 		};
 

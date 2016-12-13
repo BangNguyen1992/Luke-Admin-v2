@@ -14,7 +14,7 @@
 		vm.authService = authService;
 
 		activate();
-	// fetch all the markers saved on the server
+		// fetch all the markers saved on the server
 		function activate() {
 			apiService.get('marker')
 				.then(function (data) {
@@ -22,28 +22,23 @@
 				});
 		}
 
-	//Delets a marker from the server 	
-		$scope.delete = function (id) {
+		$scope.delete = (id) => {
 			console.log(id);
-			apiService.get('marker/remove?id=' + id).then(function (id) {
-				$state.reload(this);
-			});
+			apiService.get('marker/remove?id=' + id)
+				.then((id) => {
+					$state.reload();
+				});
 		};
 
-
-
-		$scope.saveUser = function (event) {
+		$scope.saveUser = (event) => {
 			event.preventDefault();
 		};
 		$scope.sortType = ' '; // set the default sort type
-		$scope.sortReverse = false; // set the default sort order
+		$scope.sortReverse = true; // set the default sort order
 
 		$scope.totalDisplayed = 10;
-		$scope.loadMore = function () {
+		$scope.loadMore = () =>
 			$scope.totalDisplayed += 10;
-		};
+	};
 
-
-
-	}
 }());
