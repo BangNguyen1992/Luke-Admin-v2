@@ -77,10 +77,6 @@
 				templateUrl: 'components/users/user.html',
 				controllerAs: 'vm'
 			})
-			//			.state('userDetail', {
-			//				url: '/user-detail',
-			//				templateUrl: 'components/userDetail/userDetail.html'
-			//			})
 			.state('category', {
 				url: '/category',
 				views: {
@@ -90,13 +86,26 @@
 						controllerAs: 'vm'
 					},
 					'getCategory@category': {
-						templateUrl: 'components/category/category.html',
-						controller: 'CategoryCtrl',
+						templateUrl: 'components/category/getCategory.html',
+						controller: 'GetCategoryCtrl',
 						controllerAs: 'vm'
 					}
 				}
-
-
+			})
+			.state('link', {
+				url: '/link',
+				views: {
+					'': {
+						templateUrl: 'components/link/createLink.html',
+						controller: 'CreateLinkCtrl',
+						controllerAs: 'vm'
+					},
+					'getLink@link': {
+						templateUrl: 'components/link/getLink.html',
+						controller: 'GetLinkCtrl',
+						controllerAs: 'vm'
+					}
+				}
 			});
 
 		lockProvider.init({

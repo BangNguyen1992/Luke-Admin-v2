@@ -40,19 +40,19 @@
 						<li><a ui-sref="exp">EXP Pattern</a></li>
 						<li><a ui-sref="submission">Submissions</a></li>
 						<li><a ui-sref="adminMarker">Admin Marker</a></li>
+						<li><a ui-sref="link">Links</a></li>
 
 					</ul>
 				</div>
 			</div>
 		</nav>
 
-		<div ui-view class= "testview">	</div>
+		<div cache-view="false" ui-view class= "testview">	</div>
 
 	</div>
 
 
 	<script src="bower_components/jquery/dist/jquery.js"></script>
-	<script src="custom.js"></script>
 
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
@@ -73,9 +73,10 @@
 	<script src="components/marker/CreateMarkerCtrl.js"></script>
 	<script src="components/marker/GetMarkerCtrl.js"></script>
 	<script src="components/users/UserCtrl.js"></script>
-	<script src="components/category/CategoryCtrl.js"></script>
+	<script src="components/category/GetCategoryCtrl.js"></script>
 	<script src="components/category/CreateCategoryCtrl.js"></script>
-
+	<script src="components/link/GetLinkCtrl.js"></script>
+	<script src="components/link/CreateLinkCtrl.js"></script>
 
 
 

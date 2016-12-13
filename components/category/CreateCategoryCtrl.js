@@ -10,7 +10,7 @@
 
 	function CreateCategoryCtrl(apiService, $scope, $state) {
 		var vm = this;
-		//		vm.authService = authService;
+
 		$scope.body = {
 			title: "",
 			description: "",
@@ -18,10 +18,11 @@
 			image: File
 		};
 
-		$scope.createCategory = function () {
+		$scope.createCategory = () => {
 			$scope.body.image = $scope.body.image.base64;
 			apiService.post('category/create', $scope.body)
 				.then(data => {
+				$state.reload();
 					console.log(data);
 				})
 				.catch((err) => {

@@ -12,59 +12,58 @@
 
 		var vm = this;
 
-		activate();
+		getSubmission();
 
-		function activate() {
+		function getSubmission() {
 			apiService.get('report/admin-get')
-				.then(function (data) {
+				.then((data) => {
 					vm.datas = data;
 					console.log(data);
 				});
 		}
 
 
-		$scope.delete = function (id) {
+		$scope.delete = (id) => {
 			console.log(id);
-			apiService.get('report/remove?id=' + id).then(function (id) {
-				$state.reload(this);
+			apiService.get('report/remove?id=' + id)
+				.then((id) => {
+				$state.reload();
 			});
 		};
 
 		function approve(id) {
 			console.log(id);
-			apiService.get('report/approve?id=' + id).then(function (id) {
-				$state.reload(this);
+			apiService.get('report/approve?id=' + id)
+				.then((id) => {
+				$state.reload();
 			});;
 		};
 
 		function disapprove(id) {
 			console.log(id);
-			apiService.get('report/disapprove?id=' + id).then(function (id) {
-				$state.reload(this);
+			apiService.get('report/disapprove?id=' + id)
+				.then((id) => {
+				$state.reload();
 			});
 		};
 
-		$scope.approved = function (id, approved) {
+		$scope.approved = (id, approved) => {
 			if (approved)
 				disapprove(id, approved);
 			else if (!approved)
 				approve(id);
-
 		}
 
-		$scope.saveUser = function (event) {
+		$scope.saveUser = (event) => {
 			event.preventDefault();
 		};
 		$scope.sortType = ' '; // set the default sort type
-		$scope.sortReverse = false; // set the default sort order
+		$scope.sortReverse = true; // set the default sort order
 
 		$scope.totalDisplayed = 10;
-		$scope.loadMore = function () {
+		$scope.loadMore = () {
 			$scope.totalDisplayed += 10;
 		};
-
-
-
 
 	}
 }());
