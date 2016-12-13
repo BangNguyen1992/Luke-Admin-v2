@@ -67,6 +67,8 @@ a {
 .sub-table .sub-row .sub-cell {
 	flex-basis: 40%;
 	padding: 5px;
+	max-height: 100px;
+  overflow: overlay;
 }
 
 .sub-table .sub-row .sub-cell.short {

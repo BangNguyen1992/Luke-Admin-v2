@@ -22,29 +22,28 @@
 				});
 		}
 
-
 		$scope.delete = (id) => {
 			console.log(id);
 			apiService.get('report/remove?id=' + id)
 				.then((id) => {
-				$state.reload();
-			});
+					$state.reload();
+				});
 		};
 
 		function approve(id) {
 			console.log(id);
 			apiService.get('report/approve?id=' + id)
 				.then((id) => {
-				$state.reload();
-			});;
+					$state.reload();
+				});
 		};
 
 		function disapprove(id) {
 			console.log(id);
 			apiService.get('report/disapprove?id=' + id)
 				.then((id) => {
-				$state.reload();
-			});
+					$state.reload();
+				});
 		};
 
 		$scope.approved = (id, approved) => {
@@ -61,7 +60,7 @@
 		$scope.sortReverse = true; // set the default sort order
 
 		$scope.totalDisplayed = 10;
-		$scope.loadMore = () {
+		$scope.loadMore = () => {
 			$scope.totalDisplayed += 10;
 		};
 

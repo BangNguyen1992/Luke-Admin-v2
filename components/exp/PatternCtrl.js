@@ -21,7 +21,6 @@
 				});
 		}
 
-
 		$scope.delete = (id) => {
 			console.log(id);
 			apiService.get('experience/remove?id=' + id);

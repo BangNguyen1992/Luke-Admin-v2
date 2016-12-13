@@ -15,7 +15,7 @@
 		getAllUser();
 
 		$scope.users = [];
-
+		// fetch all the users including admins and super admins
 		function getAllUser() {
 			apiService.get('user/get-all')
 				.then((data) => {
@@ -29,7 +29,6 @@
 					});
 				});
 		}
-
 
 		$scope.changeRole = (id) => {
 			apiService.get("user/roles?id=" + id)
@@ -48,7 +47,6 @@
 				});
 		}
 
-
 		var unban = (id) => {
 			apiService.get("user/unban?id=" + id)
 				.then((role) => {
@@ -56,11 +54,10 @@
 					console.log("Unbanned ", role, id);
 					$state.reload();
 				})
-			.catch((err) => {
+				.catch((err) => {
 					console.log(err);
 				});
 		}
-
 
 		var ban = (id) => {
 			apiService.get("user/ban?id=" + id)
@@ -69,7 +66,7 @@
 					console.log("Banned ", role, id);
 					$state.reload();
 				})
-			.catch((err) => {
+				.catch((err) => {
 					console.log(err);
 				});
 		}

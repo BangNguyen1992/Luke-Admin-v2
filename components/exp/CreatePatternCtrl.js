@@ -23,6 +23,6 @@
 				console.log(data);
 			});
 		}
-		
+
 	}
 }());

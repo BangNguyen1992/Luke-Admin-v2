@@ -7,7 +7,7 @@
 		.controller('CreateCategoryCtrl', CreateCategoryCtrl);
 
 	CreateCategoryCtrl.$inject = ['apiService', '$scope', '$state'];
-
+	// Gives an empty form for creating a new category
 	function CreateCategoryCtrl(apiService, $scope, $state) {
 		var vm = this;
 
@@ -22,7 +22,7 @@
 			$scope.body.image = $scope.body.image.base64;
 			apiService.post('category/create', $scope.body)
 				.then(data => {
-				$state.reload();
+					$state.reload();
 					console.log(data);
 				})
 				.catch((err) => {

@@ -13,10 +13,9 @@
 		var vm = this;
 		$scope.body = {};
 
-
 		$scope.createPattern = () => {
 			console.log($scope.body);
-		
+
 			apiService.post('marker/create', $scope.body)
 
 			.then((data) => {
@@ -24,6 +23,6 @@
 				$state.reload();
 			});
 		}
-		
+
 	}
 }());

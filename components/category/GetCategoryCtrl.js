@@ -12,7 +12,7 @@
 		var vm = this;
 
 		findall();
-
+// Fetch all the catagories from the server
 		function findall() {
 			apiService.get('category')
 				.then((data) => {
@@ -35,7 +35,6 @@
 				});
 		};
 
-
 		$scope.saveUser = (event) => {
 			event.preventDefault();
 		};
@@ -46,8 +45,6 @@
 		$scope.loadMore = () => {
 			$scope.totalDisplayed += 10;
 		};
-
-
 
 	}
 

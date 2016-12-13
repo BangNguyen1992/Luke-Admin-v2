@@ -14,7 +14,7 @@
 		findall();
 
 		function findall() {
-			apiService.get('link')
+			apiService.get('link/admin-get')
 				.then((data) => {
 					vm.datas = data;
 					console.log(data);
