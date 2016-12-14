@@ -106,6 +106,21 @@
 						controllerAs: 'vm'
 					}
 				}
+			})
+		.state('rank', {
+				url: '/rank',
+				views: {
+					'': {
+						templateUrl: 'components/rank/createRank.html',
+						controller: 'CreateRankCtrl',
+						controllerAs: 'vm'
+					},
+					'getRank@rank': {
+						templateUrl: 'components/rank/getRank.html',
+						controller: 'GetRankCtrl',
+						controllerAs: 'vm'
+					}
+				}
 			});
 
 		lockProvider.init({

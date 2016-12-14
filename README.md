@@ -34,7 +34,7 @@ open localhost on port 3000
 ## Contributors:
 [Titay](https://github.com/titay2): Users, Categories, Submission, User profile
 
-[Bang Nguyen](https://github.com/BangNguyen1992): EXP Pattern, Submissions, Admin Marker, Categories, Users, Link
+[Bang Nguyen](https://github.com/BangNguyen1992): EXP Pattern, Submissions, Admin Marker, Categories, Users, Link, Rank
 
 ## Acknowledgments
 
