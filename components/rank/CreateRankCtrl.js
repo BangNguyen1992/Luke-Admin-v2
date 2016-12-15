@@ -10,7 +10,9 @@
 
 	function CreateRankCtrl(apiService, $scope, $state) {
 		var vm = this;
-		$scope.body = {};
+		$scope.body = {
+			image: File
+		};
 
 		$scope.createRank = () => {
 			$scope.body.image = $scope.body.image.base64;
