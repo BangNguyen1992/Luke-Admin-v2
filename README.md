@@ -20,7 +20,7 @@ npm install -g serve
 serve
 
 # On your Browser
-open localhost on port 3000
+open localhost on port 5000
 ```
 
 ## Built With

@@ -1,90 +1,91 @@
 <html>
 
 <head>
-	<title>Luke App</title>
+  <title>Luke App</title>
 
-	<!-- Viewport settings-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!-- Viewport settings-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-	<!-- Basic style -->
-	<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-	<link href="bower_components/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet" />
-	<link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Basic style -->
+  <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+  <link href="bower_components/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet" />
+  <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
 
-	<style>
-		.navbar {
-			margin-bottom: 0;
-			border-radius: 0;
-		}
-	</style>
+  <style>
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+  </style>
 
-	<link href="main.css" rel="stylesheet"/>
+  <link href="main.css" rel="stylesheet" />
 
 </head>
 
 <body>
-	<div id="app-container" ng-app="app">
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" ui-sref="home">Auth0</a>
-				</div>
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-						<li ng-if="!isAuthenticated"><a ui-sref="login">Log In</a></li>
-						<li ng-if="isAuthenticated"><a ui-sref="home" ng-click="authService.logout()">Log Out</a></li>
-						<li><a ui-sref="home">Home</a></li>
-						<li><a ui-sref="user">Users</a></li>
-						<li><a ui-sref="category">Categories</a></li>
-						<li><a ui-sref="exp">EXP Pattern</a></li>
-						<li><a ui-sref="submission">Submissions</a></li>
-						<li><a ui-sref="adminMarker">Admin Marker</a></li>
-						<li><a ui-sref="link">Links</a></li>
-						<li><a ui-sref="rank">Rank</a></li>
+  <div id="app-container" ng-app="app">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" ui-sref="home">Auth0</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li ng-if="!isAuthenticated"><a ui-sref="login">Log In</a></li>
+            <li ng-if="isAuthenticated"><a ui-sref="home" ng-click="authService.logout()">Log Out</a></li>
+            <li><a ui-sref="home">Home</a></li>
+            <li><a ui-sref="user">Users</a></li>
+            <li><a ui-sref="category">Categories</a></li>
+            <li><a ui-sref="exp">EXP Pattern</a></li>
+            <li><a ui-sref="submission">Submissions</a></li>
+            <li><a ui-sref="adminMarker">Admin Marker</a></li>
+            <li><a ui-sref="link">Links</a></li>
+            <li><a ui-sref="rank">Rank</a></li>
 
-					</ul>
-				</div>
-			</div>
-		</nav>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-		<div cache-view="false" ui-view class= "testview">	</div>
+    <div cache-view="false" ui-view class="testview"> </div>
 
-	</div>
-
-
-	<script src="bower_components/jquery/dist/jquery.js"></script>
-
-	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
-	<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-	<script type="text/javascript" src="bower_components/auth0-lock/build/lock.js"></script>
-	<script type="text/javascript" src="bower_components/angular-lock/dist/angular-lock.js"></script>
-	<script type="text/javascript" src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
-	<script type="text/javascript" src="app.js"></script>
-	<script type="text/javascript" src="app.run.js"></script>
-	<script type="text/javascript" src="components/home/HomeCtrl.js"></script>
-	<script type="text/javascript" src="components/login/LoginCtrl.js"></script>
-	<script type="text/javascript" src="components/auth/auth.service.js"></script>
-
-<!--	Import component scripts-->
-	<script src="components/apiService.js"></script>
-	<script src="components/exp/CreatePatternCtrl.js"></script>
-	<script src="components/exp/PatternCtrl.js"></script>
-	<script src="components/submission/submissionCtrl.js"></script>
-	<script src="components/marker/CreateMarkerCtrl.js"></script>
-	<script src="components/marker/GetMarkerCtrl.js"></script>
-	<script src="components/users/UserCtrl.js"></script>
-	<script src="components/category/GetCategoryCtrl.js"></script>
-	<script src="components/category/CreateCategoryCtrl.js"></script>
-	<script src="components/link/GetLinkCtrl.js"></script>
-	<script src="components/link/CreateLinkCtrl.js"></script>
-	<script src="components/rank/CreateRankCtrl.js"></script>
-	<script src="components/rank/GetRankCtrl.js"></script>
+  </div>
 
 
-	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-	<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-	<script src="bower_components/angular-base64-upload/dist/angular-base64-upload.min.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="auth0-variables.js"></script>
+  <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script type="text/javascript" src="bower_components/auth0-lock/build/lock.js"></script>
+  <script type="text/javascript" src="bower_components/angular-lock/dist/angular-lock.js"></script>
+  <script type="text/javascript" src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="app.run.js"></script>
+  <script type="text/javascript" src="components/home/HomeCtrl.js"></script>
+  <script type="text/javascript" src="components/login/LoginCtrl.js"></script>
+  <script type="text/javascript" src="components/auth/auth.service.js"></script>
+
+  <!--	Import component scripts-->
+  <script src="components/apiService.js"></script>
+  <!--<script src="components/authService.js"></script>-->
+  <script src="components/exp/CreatePatternCtrl.js"></script>
+  <script src="components/exp/PatternCtrl.js"></script>
+  <script src="components/submission/submissionCtrl.js"></script>
+  <script src="components/marker/CreateMarkerCtrl.js"></script>
+  <script src="components/marker/GetMarkerCtrl.js"></script>
+  <script src="components/users/UserCtrl.js"></script>
+  <script src="components/category/GetCategoryCtrl.js"></script>
+  <script src="components/category/CreateCategoryCtrl.js"></script>
+  <script src="components/link/GetLinkCtrl.js"></script>
+  <script src="components/link/CreateLinkCtrl.js"></script>
+  <script src="components/rank/CreateRankCtrl.js"></script>
+  <script src="components/rank/GetRankCtrl.js"></script>
+
+
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="bower_components/angular-base64-upload/dist/angular-base64-upload.min.js"></script>
 
 </body>
 

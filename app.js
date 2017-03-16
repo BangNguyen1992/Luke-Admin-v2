@@ -4,18 +4,18 @@
 
 	angular
 		.module('app', [
-		'auth0.lock',
-		'angular-jwt',
-		'ui.router',
-		'ui.bootstrap',
-		'naif.base64'
-	])
+			'auth0.lock',
+			'angular-jwt',
+			'ui.router',
+			'ui.bootstrap',
+			'naif.base64'
+		])
 		.config(config);
+
 
 	config.$inject = ['$stateProvider', 'lockProvider', '$urlRouterProvider'];
 
-	function config($stateProvider, lockProvider, $urlRouterProvider, $http) {
-
+	function config($stateProvider, lockProvider, $urlRouterProvider) {
 
 		$stateProvider
 			.state('home', {
@@ -71,7 +71,7 @@
 				}
 			})
 
-		.state('user', {
+			.state('user', {
 				url: '/user',
 				controller: 'UserCtrl',
 				templateUrl: 'components/users/user.html',
@@ -107,7 +107,7 @@
 					}
 				}
 			})
-		.state('rank', {
+			.state('rank', {
 				url: '/rank',
 				views: {
 					'': {
@@ -124,13 +124,12 @@
 			});
 
 		lockProvider.init({
-			clientID: "PiNpdLmpYJrgKllnT7GbLbjAFKjtcAY6",
-			domain: "nikitak.eu.auth0.com"
+			clientID: AUTH0_CLIENT_ID,
+			domain: AUTH0_DOMAIN
 		});
 
-
-
 		$urlRouterProvider.otherwise('/home');
+
 	}
 
 })();

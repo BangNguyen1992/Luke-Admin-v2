@@ -13,12 +13,13 @@
       get: get,
       post: post,
     };
+		
     $http.defaults.headers.common = {
 			'Content-Type': 'application/json',
 			'Authorization': 'Bearer '+ localStorage.id_token,
 			'acstoken': localStorage.acstoken
-		
 		};
+		
     var rootUrl = 'http://www.balticapp.fi/lukeA/';
 
     return service;
