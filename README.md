@@ -10,6 +10,13 @@ This webapp only work for Baltic LUKE project.
 To run the application:
 
 ```bash
+# Ready
+Clone/Download this project
+
+Download and install Node from https://nodejs.org/en/
+
+Go to project folder and install bower -> `npm install -g bower`
+
 # Install the dependencies
 bower install
 
