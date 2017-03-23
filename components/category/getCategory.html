@@ -1,94 +1,94 @@
 <h3 style="padding-bottom: 26px;" class="text-center">Category List</h3>
 <div class="pad" style="display: flex">
 
-	<div class="row sub-table">
-		<div class="table-content">
-			<div class="table-header">
-				<div class="sub-row">
+  <div class="row sub-table">
+    <div class="table-content">
+      <div class="table-header">
+        <div class="sub-row">
 
-					<!--TITLE-->
-					<div class="sub-cell">
-						<a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse; saveUser($event)">
-							<span>Title</span>
-							<span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
-							<span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
-						</a>
-					</div>
+          <!--TITLE-->
+          <div class="sub-cell">
+            <a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse; saveUser($event)">
+              <span>Title</span>
+              <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+          </div>
 
-					<!--DESCRIPTION-->
-					<div class="sub-cell">
-						<a href="#" ng-click="sortType = 'description'; sortReverse = !sortReverse; saveUser($event)">
-							<span>Description</span>
-							<span ng-show="sortType == 'description' && !sortReverse" class="fa fa-caret-down"></span>
-							<span ng-show="sortType == 'description' && sortReverse" class="fa fa-caret-up"></span>
-						</a>
-					</div>
+          <!--DESCRIPTION-->
+          <div class="sub-cell">
+            <a href="#" ng-click="sortType = 'description'; sortReverse = !sortReverse; saveUser($event)">
+              <span>Description</span>
+              <span ng-show="sortType == 'description' && !sortReverse" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'description' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+          </div>
 
 
 
-					<!--TYPE: POSITIVE OR NEGATIVE-->
-					<div class="sub-cell text-center">
-						<a href="#" ng-click="sortType = 'Positive'; sortReverse = !sortReverse; saveUser($event)">
-							<span>Positive</span>
-							<span ng-show="sortType == 'Positive' && !sortReverse" class="fa fa-caret-down"></span>
-							<span ng-show="sortType == 'Positive' && sortReverse" class="fa fa-caret-up"></span>
-						</a>
-					</div>
+          <!--TYPE: POSITIVE OR NEGATIVE-->
+          <div class="sub-cell text-center">
+            <a href="#" ng-click="sortType = 'Positive'; sortReverse = !sortReverse; saveUser($event)">
+              <span>Positive</span>
+              <span ng-show="sortType == 'Positive' && !sortReverse" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'Positive' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+          </div>
 
-					<!--SHOW IMAGE-->
-					<div class="sub-cell text-center">Show image</div>
+          <!--SHOW IMAGE-->
+          <div class="sub-cell text-center">Show image</div>
 
-					<!--DELETE-->
-					<div class="sub-cell text-center">DELETE </div>
+          <!--DELETE-->
+          <div class="sub-cell text-center">DELETE </div>
 
-				</div>
-			</div>
+        </div>
+      </div>
 
-			<!--Table content-->
-			<div ng-repeat="data in vm.datas | orderBy:sortType:sortReverse | limitTo:totalDisplayed" class="sub-row table-data">
-				<!--				TITLE-->
-				<div class="sub-cell text-left">{{data.title}}</div>
+      <!--Table content-->
+      <div ng-repeat="data in vm.datas | orderBy:sortType:sortReverse | limitTo:totalDisplayed" class="sub-row table-data">
+        <!--				TITLE-->
+        <div class="sub-cell text-left">{{data.title}}</div>
 
-				<!--				DESCRIPTION-->
-				<div class="sub-cell text-left">{{data.description}}</div>
+        <!--				DESCRIPTION-->
+        <div class="sub-cell text-left">{{data.description}}</div>
 
-				<!--				Positive-->
-				<div class="sub-cell text-center">{{data.positive}}</div>
+        <!--				Positive-->
+        <div class="sub-cell text-center">{{data.positive}}</div>
 
-				<!--				SHOW IMAGE-->
-				<div class="sub-cell text-center">
-					<button class="btn" type="button" data-id={{data.id}} data-toggle="modal" data-target="#modal{{data.id}}">Image</button>
-				</div>
+        <!--				SHOW IMAGE-->
+        <div class="sub-cell text-center">
+          <button class="btn" type="button" data-id={{data.id}} data-toggle="modal" data-target="#modal{{data.id}}">Image</button>
+        </div>
 
-				<div class="modal-container">
-					<div class="modal" id="modal{{data.id}}">
-						<div class="modal-dialog">
-							<div class="modal-content">
+        <div class="modal-container">
+          <div class="modal" id="modal{{data.id}}">
+            <div class="modal-dialog">
+              <div class="modal-content">
 
-								<div class="modal-body">
-									<img src="{{data.image_url}}" class="img-responsive" atl="img" />
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <div class="modal-body">
+                  <img src="{{data.image_url}}" class="img-responsive" atl="img" />
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-								</div>
-							</div>
-							<!-- /.modal-content -->
-						</div>
-						<!-- /.modal-dialog -->
-					</div>
-					<!-- /.modal -->
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
 
-				</div>
+        </div>
 
-				<!--				DELETE ACTION-->
-				<div class="sub-cell text-center">
-					<button class="btn"><a sub-id={{data.id}} ng-click="delete(data.id)">Delete</a></button>
-				</div>
+        <!--				DELETE ACTION-->
+        <div class="sub-cell text-center">
+          <button class="btn" sub-id={{data.id}} ng-click="delete(data.id)">Delete</button>
+        </div>
 
-			</div>
-		</div>
-		<button class="btn btn-load text-center" ng-click="loadMore()">Load more</button>
-	</div>
+      </div>
+    </div>
+    <button class="btn btn-load text-center" ng-click="loadMore()">Load more</button>
+  </div>
 
 </div>

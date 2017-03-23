@@ -1,102 +1,102 @@
 <div class="pad">
 
-	<div class="col-md-3 col-xs-12">
-		<div ui-view="create">
-		</div>
-	</div>
-	<div class="col-md-9 col-xs-12">
-		
-		<h3 style="padding-bottom: 26px;" class="text-center">EXP PATTERN LIST</h3>
-		<div class="pad" style="display: flex">
+  <div class="col-md-3 col-xs-12">
+    <div ui-view="create">
+    </div>
+  </div>
+  <div class="col-md-9 col-xs-12">
 
-			<div class="row sub-table">
-				<div class="table-content">
-					<div class="table-header">
-						<div class="sub-row">
+    <h3 style="padding-bottom: 26px;" class="text-center">EXP PATTERN LIST</h3>
+    <div class="pad" style="display: flex">
 
-							<!--TITLE-->
-							<div class="sub-cell">
-								<a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse; saveUser($event)">
-									<span>Title</span>
-									<span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
-									<span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
-								</a>
-							</div>
+      <div class="row sub-table">
+        <div class="table-content">
+          <div class="table-header">
+            <div class="sub-row">
 
-							<!--REPORT EXP GAIN-->
-							<div class="sub-cell text-center">
-								<a href="#" ng-click="sortType = 'exp'; sortReverse = !sortReverse; saveUser($event)">
-									<span>Report Gain</span>
-									<span ng-show="sortType == 'exp' && !sortReverse" class="fa fa-caret-down"></span>
-									<span ng-show="sortType == 'exp' && sortReverse" class="fa fa-caret-up"></span>
-								</a>
-							</div>
+              <!--TITLE-->
+              <div class="sub-cell">
+                <a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse; saveUser($event)">
+                  <span>Title</span>
+                  <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </div>
 
-							<!--UPVOTE GAIN-->
-							<div class="sub-cell text-center">
-								<a href="#" ng-click="sortType = 'upvote'; sortReverse = !sortReverse; saveUser($event)">
-									<span>Upvote Gain</span>
-									<span ng-show="sortType == 'upvote' && !sortReverse" class="fa fa-caret-down"></span>
-									<span ng-show="sortType == 'upvote' && sortReverse" class="fa fa-caret-up"></span>
-								</a>
-							</div>
+              <!--REPORT EXP GAIN-->
+              <div class="sub-cell text-center">
+                <a href="#" ng-click="sortType = 'exp'; sortReverse = !sortReverse; saveUser($event)">
+                  <span>Report Gain</span>
+                  <span ng-show="sortType == 'exp' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'exp' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </div>
 
-							<!--DOWNVOTE GAIN-->
-							<div class="sub-cell text-center">
-								<a href="#" ng-click="sortType = 'downvote'; sortReverse = !sortReverse; saveUser($event)">
-									<span>Downvote Gain</span>
-									<span ng-show="sortType == 'downvote' && !sortReverse" class="fa fa-caret-down"></span>
-									<span ng-show="sortType == 'downvote' && sortReverse" class="fa fa-caret-up"></span>
-								</a>
-							</div>
+              <!--UPVOTE GAIN-->
+              <div class="sub-cell text-center">
+                <a href="#" ng-click="sortType = 'upvote'; sortReverse = !sortReverse; saveUser($event)">
+                  <span>Upvote Gain</span>
+                  <span ng-show="sortType == 'upvote' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'upvote' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </div>
 
-							<!--ACTIVATION STATUS-->
-							<div class="sub-cell text-center">
-								<a href="#" ng-click="sortType = 'activate'; sortReverse = !sortReverse; saveUser($event)">
-									<span>Activation</span>
-									<span ng-show="sortType == 'activate' && !sortReverse" class="fa fa-caret-down"></span>
-									<span ng-show="sortType == 'activate' && sortReverse" class="fa fa-caret-up"></span>
-								</a>
-							</div>
+              <!--DOWNVOTE GAIN-->
+              <div class="sub-cell text-center">
+                <a href="#" ng-click="sortType = 'downvote'; sortReverse = !sortReverse; saveUser($event)">
+                  <span>Downvote Gain</span>
+                  <span ng-show="sortType == 'downvote' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'downvote' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </div>
 
-
-							<!--DELETE-->
-							<div class="sub-cell text-center">DELETE </div>
-
-						</div>
-					</div>
-
-					<!--Table content-->
-					<div ng-repeat="data in vm.datas | orderBy:sortType:sortReverse | limitTo:totalDisplayed" class="sub-row table-data">
-
-						<!--				TITLE-->
-						<div class="sub-cell">{{data.title}}</div>
-						
-						<!--				REPORT EXP GAIN-->
-						<div class="sub-cell text-center">{{data.reportGain}}</div>
-
-						<!--				UPVOTE GAIN-->
-						<div class="sub-cell text-center">{{data.upvoteGain}}</div>
-
-						<!--				DOWNVOTE GAIN-->
-						<div class="sub-cell text-center">{{data.downvoteGain}}</div>
-
-						<!--				ACTIVATION STATUS-->
-						<div class="sub-cell text-center"><a class="data-cell" data-id={{data.id}} ng-click="activate(data.id, data.active)">{{data.active}}</a></div>
-
-						<!--				DELETE ACTION-->
-						<div class="sub-cell text-center">
-							<button class="btn"><a sub-id={{data.id}} ng-click="delete(data.id)">Delete</a></button>
-						</div>
-
-					</div>
-				</div>
-				<button class="btn btn-load text-center" ng-click="loadMore()">Load more</button>
-			</div>
-
-		</div>
+              <!--ACTIVATION STATUS-->
+              <div class="sub-cell text-center">
+                <a href="#" ng-click="sortType = 'activate'; sortReverse = !sortReverse; saveUser($event)">
+                  <span>Activation</span>
+                  <span ng-show="sortType == 'activate' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'activate' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </div>
 
 
-	</div>
+              <!--DELETE-->
+              <div class="sub-cell text-center">DELETE </div>
+
+            </div>
+          </div>
+
+          <!--Table content-->
+          <div ng-repeat="data in vm.datas | orderBy:sortType:sortReverse | limitTo:totalDisplayed" class="sub-row table-data">
+
+            <!--				TITLE-->
+            <div class="sub-cell">{{data.title}}</div>
+
+            <!--				REPORT EXP GAIN-->
+            <div class="sub-cell text-center">{{data.reportGain}}</div>
+
+            <!--				UPVOTE GAIN-->
+            <div class="sub-cell text-center">{{data.upvoteGain}}</div>
+
+            <!--				DOWNVOTE GAIN-->
+            <div class="sub-cell text-center">{{data.downvoteGain}}</div>
+
+            <!--				ACTIVATION STATUS-->
+            <div class="sub-cell text-center"><a class="data-cell" data-id={{data.id}} ng-click="activate(data.id, data.active)">{{data.active}}</a></div>
+
+            <!--				DELETE ACTION-->
+            <div class="sub-cell text-center">
+              <button class="btn" sub-id={{data.id}} ng-click="delete(data.id)">Delete</button>
+            </div>
+
+          </div>
+        </div>
+        <button class="btn btn-load text-center" ng-click="loadMore()">Load more</button>
+      </div>
+
+    </div>
+
+
+  </div>
 
 </div>

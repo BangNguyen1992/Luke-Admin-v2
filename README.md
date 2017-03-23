@@ -17,10 +17,10 @@ bower install
 npm install -g serve
 
 # Run
-serve
+serve --port 3000
 
 # On your Browser
-open localhost on port 5000
+open http://localhost:3000
 ```
 
 ## Built With

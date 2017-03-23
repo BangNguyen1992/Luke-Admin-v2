@@ -1,107 +1,107 @@
 <!--	Submission List-->
 <div>
-	<h1 class="text-center" style="padding-top: 20px">USER LIST</h1>
-	<div class="pad" style="display: flex">
+  <h1 class="text-center" style="padding-top: 20px">USER LIST</h1>
+  <div class="pad" style="display: flex">
 
-		<div class="row data-table">
-			<div class="table-content">
-				<div class="table-header">
-					<div class="data-row">
+    <div class="row data-table">
+      <div class="table-content">
+        <div class="table-header">
+          <div class="data-row">
 
-						<!--AVATAR-->
-						<div class="data-cell text-center">
-								<span>Avatar</span>
-						</div>
+            <!--AVATAR-->
+            <div class="data-cell text-center">
+              <span>Avatar</span>
+            </div>
 
-						<!--USERNAME-->
-						<div class="data-cell text-center">
-							<a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse; saveUser($event)">
-								<span>Username</span>
-								<span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
-								<span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
-							</a>
-						</div>
+            <!--USERNAME-->
+            <div class="data-cell text-center">
+              <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse; saveUser($event)">
+                <span>Username</span>
+                <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </div>
 
-						<!--SCORE-->
-						<div class="data-cell short text-center">
-							<a href="#" ng-click="sortType = 'score'; sortReverse = !sortReverse; saveUser($event)">
-								<span>Score</span>
-								<span ng-show="sortType == 'score' && !sortReverse" class="fa fa-caret-down"></span>
-								<span ng-show="sortType == 'score' && sortReverse" class="fa fa-caret-up"></span>
-							</a>
-						</div>
+            <!--SCORE-->
+            <div class="data-cell short text-center">
+              <a href="#" ng-click="sortType = 'score'; sortReverse = !sortReverse; saveUser($event)">
+                <span>Score</span>
+                <span ng-show="sortType == 'score' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'score' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </div>
 
-						<!--RANK-->
-						<div class="data-cell short text-center">
-							<a href="#" ng-click="sortType = 'rank'; sortReverse = !sortReverse; saveUser($event)">
-								<span>Rank</span>
-								<span ng-show="sortType == 'rank' && !sortReverse" class="fa fa-caret-down"></span>
-								<span ng-show="sortType == 'rank' && sortReverse" class="fa fa-caret-up"></span>
-							</a>
-						</div>
+            <!--RANK-->
+            <div class="data-cell short text-center">
+              <a href="#" ng-click="sortType = 'rank'; sortReverse = !sortReverse; saveUser($event)">
+                <span>Rank</span>
+                <span ng-show="sortType == 'rank' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'rank' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </div>
 
-						<!--USER ID-->
-						<div class="data-cell text-center">
-							<a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse; saveUser($event)">
-								<span>User ID</span>
-								<span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
-								<span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
-							</a>
-						</div>
+            <!--USER ID-->
+            <div class="data-cell text-center">
+              <a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse; saveUser($event)">
+                <span>User ID</span>
+                <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </div>
 
-						<!--ROLES / STATE-->
-						<div class="data-cell text-center">
-							<a href="#" ng-click="sortType = 'role'; sortReverse = !sortReverse; saveUser($event)">
-								<span>Roles / state</span>
-								<span ng-show="sortType == 'role' && !sortReverse" class="fa fa-caret-down"></span>
-								<span ng-show="sortType == 'role' && sortReverse" class="fa fa-caret-up"></span>
-							</a>
-						</div>
+            <!--ROLES / STATE-->
+            <div class="data-cell text-center">
+              <a href="#" ng-click="sortType = 'role'; sortReverse = !sortReverse; saveUser($event)">
+                <span>Roles / state</span>
+                <span ng-show="sortType == 'role' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'role' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </div>
 
-						<!--BAN/UNBAN-->
-						<div class="data-cell text-center"> </div>
+            <!--BAN/UNBAN-->
+            <div class="data-cell text-center"> </div>
 
-					</div>
-				</div>
+          </div>
+        </div>
 
-				<!--Table content-->
-				<div ng-repeat="user in users | orderBy:sortType:sortReverse | limitTo:totalDisplayed" class="data-row table-data">
-					<!--				AVATAR-->
-					<div class="data-cell text-center"><img class="avatar" src="{{user.image_url}}" alt="Avatar"> </div>
+        <!--Table content-->
+        <div ng-repeat="user in users | orderBy:sortType:sortReverse | limitTo:totalDisplayed" class="data-row table-data">
+          <!--				AVATAR-->
+          <div class="data-cell text-center"><img class="avatar" src="{{user.image_url}}" alt="Avatar"> </div>
 
-					<!--				USERNAME-->
-					<div class="data-cell text-center">{{user.username}}</div>
+          <!--				USERNAME-->
+          <div class="data-cell text-center">{{user.username}}</div>
 
-					<!--				SCORE-->
-					<div class="data-cell text-center short">{{user.score}}</div>
+          <!--				SCORE-->
+          <div class="data-cell text-center short">{{user.score}}</div>
 
-					<!--				RANK-->
-					<div class="data-cell text-center short">{{user.rankingId}}</div>
+          <!--				RANK-->
+          <div class="data-cell text-center short">{{user.rankingId}}</div>
 
-					<!--				USER ID-->
-					<div class="data-cell text-center" style="word-break: break-all;">{{user.id}}</div>
+          <!--				USER ID-->
+          <div class="data-cell text-center" style="word-break: break-all;">{{user.id}}</div>
 
-					<!--				STATE-->
-					<div class="data-cell text-center" style="word-break: break-all;">
-						<span ng-show="user.roles == ['ban']">Banned</span>
-						<span ng-show="user.roles == [''] ">Unbanned</span>
-						<span ng-show="user.roles != ['ban'] ">{{user.roles}}</span>
-					</div>
+          <!--				STATE-->
+          <div class="data-cell text-center" style="word-break: break-all;">
+            <span ng-show="user.roles == ['ban']">Banned</span>
+            <span ng-show="user.roles == [''] ">Unbanned</span>
+            <span ng-show="user.roles != ['ban'] ">{{user.roles}}</span>
+          </div>
 
-					<!--				BAN/UNBAN-->
-					<div class="data-cell text-right">
-						<button class="btn"><a data-id={{user.id}} ng-click="changeRole(user.id)">Ban/Unban</a></button>
-					</div>
+          <!--				BAN/UNBAN-->
+          <div class="data-cell text-right">
+            <button class="btn" data-id={{user.id}} ng-click="changeRole(user.id)">Ban/Unban</button>
+          </div>
 
-				</div>
-
-
-			</div>
-			<button class="btn btn-load text-center" ng-click="loadMore()">Load more</button>
-		</div>
+        </div>
 
 
-	</div>
+      </div>
+      <button class="btn btn-load text-center" ng-click="loadMore()">Load more</button>
+    </div>
+
+
+  </div>
 
 
 
