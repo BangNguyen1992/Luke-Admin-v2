@@ -15,10 +15,7 @@ Clone/Download this project
 
 Download and install Node from https://nodejs.org/en/
 
-Go to project folder and install bower 
-```
-npm install -g bower
-```
+Go to project folder and install bower -> npm install -g bower
 
 # Install the dependencies
 bower install
